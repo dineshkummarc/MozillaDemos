@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Monsters run</title>
+		<meta name="description" content="multiplayer,three.js , multiplayer game , free download , free source code , source code ,monster run,">
+		<meta name="keywords" content="three.js multiplayer,js multiplayer,3d js game,multiplayer game,three.js game,3d JavaScript">
+		<meta name="author" content="Nikola Lukic">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<!-- load the jWebSocket JavaScript client library -->
+		<link rel="stylesheet" type="text/css" href="server/jWebSocketClient/jWebSocketClient/res/css/jwebsocket.css">
+		<script src="server/jWebSocketClient/jWebSocketClient/res/js/jWebSocket.js" type="text/javascript"></script>
+		<script type="text/javascript" src="server/jWebSocketClient/jWebSocketClient/res/js/jwsChannelPlugIn.js"></script>
+		<style>
+			a {border: none;font-family: Verdana, Helvetica, sans-serif;font-size: 12pt;color: white;}
+			#msg {line-height: 40px; margin:0 auto;position:absolute;left:50%;top:2%;opacity:0.5;width:200px;height:40px;text-align:center;background:white;border-radius:30px;}
+			 
+		</style>
+		
+		<script>
+		// global var
+		var GLOBAL_OBJECT_INDEX = 0,GENERAL_COALIZ = 0;
+		  
+		 
+		</script>
+		
+	</head>
+	<body style="background:black;margin:0;" onload="initPage();" onunload="exitPage();" >
+	  <div id="msg" >MUSIC<audio id="audio" controls="controls" autoplay="autoplay" src="http://radio.nessradio.net:8000/nessradio.mp3" ></audio></div>  
+	<!--not important--><h1><img style="position:absolute;top:-1000px;" src="monster_run.png" /><a style="position:absolute;top:-1000px;" href="http://info.flagcounter.com/7o7f"><img src="http://s08.flagcounter.com/count/7o7f/bg_000000/txt_8AE019/border_CCCCCC/columns_2/maxflags_12/viewers_0/labels_0/pageviews_0/flags_0/" alt="Flag Counter" border="0"></a></h1><!--not important-->
+		
+		<div id="info"></div>
+		<div id="position_tag" style="padding:5px;position:absolute;border:solid 2px;border-radius:25px;border-color:#ffffff;width:240px;height:130px;" >
+		Player Location:
+		<input id="XX" type="text" value="0" style="width:30px;"/>
+		<input id="YY" type="text" value="0" style="width:30px;"/>
+		<input id="ZZ" type="text" value="0" style="width:30px;"/>
+	<br/>	
+	<progress id="HELT" value="100" max="100"></progress>->energy
+	<br/>	
+    <progress id="ISKUSTVO" value="1" max="100"></progress>->experience
+	<br/>	
+    <progress id="STIT" value="0" max="100"></progress>->shield	
+	<br/>	
+   - connection<img style="" id="simgStatus" src="server/jWebSocketClient/jWebSocketClient/images/disconnected.png" align="left"/>
+ 
+		</div>
+	
+		<script src="js/three.min.js"></script>
+		 
+		
+		<script src='js/MD2Character.js'></script>
+		<script src='js/MD2CharacterComplex.js'></script>
+	    <script src="js/ColladaLoader.js"></script>
+		<script src="js/OBJLoader.js"></script> 
+		<script src="js/cube.js"></script> 
+		<script src='js/player.js'></script>
+		<script src='js/libs/DAT.GUI.min.js'></script>
+		<script src='js/opo1.js'></script>
+		<script src='js/network_player.js'></script>
+		<script src='js/spot_light.js'></script>
+		<script src='js/player_invetory.js'></script>
+		<script src='js/Detector.js'></script>
+		<script src='js/Stats.js'></script>
+
+		<script>
+			 function ELE(OBJ){
+			 var N = document.getElementById(OBJ) ;
+			 return N;
+			 }
+		
+		     player_group = new THREE.Object3D(); 
+		
+			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+			var SCREEN_WIDTH = window.innerWidth - 10;
+			var SCREEN_HEIGHT = window.innerHeight -10;
+
+			var container, camera, scene, renderer;
+
+			var characters = [];
+			var nCharacters = 0;
+
+			var cameraControls;
+
+			//##########@
+		    // GLOBAL VAR@
+			//##########@
+		
+			 
+			//player controls
+			var controls = {
+
+				moveForward: false,
+				moveBackward: false,
+				moveLeft: false,
+				moveRight: false,
+                 attack : false 
+			};
+
+			var clock = new THREE.Clock();
+
+			init();
+			animate();
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				// CAMERA
+
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 4000 );
+				camera.position.set( 0, 150, 1300 );
+
+				// SCENE
+
+				scene = new THREE.Scene();
+				scene.fog = new THREE.Fog( 0x000000, 1100, 4000 );
+				scene.add( camera );
+
+				// LIGHTS
+
+				//scene.add( new THREE.AmbientLight( 0x662222 ) );
+
+				var light = new THREE.DirectionalLight( 0xffffff, 2.25 );
+				light.position.set(  -555 , 220 , 333);
+
+				light.castShadow = true;
+				light.shadowMapWidth = 256;
+				light.shadowMapHeight = 256;
+				light.shadowMapDarkness = 0.95;
+				light.shadowCameraVisible = false;
+
+				light.shadowCascade = true;
+				light.shadowCascadeCount = 3;
+				light.shadowCascadeNearZ = [ -1.000, 0.995, 0.998 ];
+				light.shadowCascadeFarZ  = [  0.995, 0.998, 1.000 ];
+				light.shadowCascadeWidth = [ 256, 256, 256 ];
+				light.shadowCascadeHeight = [ 256, 256, 256 ];
+
+				
+
+				scene.add( light );
+				
+				
+				function SPOT_LIGHT_SIMPLY(x,y,z){
+				var spotlight = new THREE.SpotLight(0x00ff00);
+				spotlight.position.set(x , y , z);
+				spotlight.shadowCameraVisible = false;
+				spotlight.shadowDarkness = 0.55;
+				spotlight.intensity = 4;
+				// must enable shadow casting ability for the light
+				spotlight.castShadow = true;
+				
+				scene.add(spotlight);
+				}	 
+				SPOT_LIGHT_SIMPLY(0,122,0);
+				// SPOT_LIGHT_MAP( 0,50,0,'0xff00ff');
+ 
+			  
+				//
+				
+
+				//  GROUND
+
+				var gt = THREE.ImageUtils.loadTexture( "textures/terrain/backgrounddetailed6.jpg" );
+				var gg = new THREE.PlaneGeometry( 21000, 21000 );
+				var gm = new THREE.MeshPhongMaterial( { color: 0xffffff, map: gt, perPixel: true } );
+
+				var ground = new THREE.Mesh( gg, gm );
+				ground.rotation.x = - Math.PI / 2;
+				ground.material.map.repeat.set( 21, 21 );
+				ground.material.map.wrapS = ground.material.map.wrapT = THREE.RepeatWrapping;
+				ground.receiveShadow = true;
+
+				scene.add( ground );
+
+				// RENDERER
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+				renderer.setClearColor( scene.fog.color, 2 );
+
+				container.appendChild( renderer.domElement );
+  
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+				renderer.shadowMapEnabled = true;
+				//renderer.shadowMapCullFrontFaces = false;
+
+				renderer.shadowMapCascade = true;
+				//renderer.shadowMapDebug = true;
+
+				// STATS
+
+				stats = new Stats();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				stats.domElement.style.zIndex = 100;
+				container.appendChild( stats.domElement );
+
+				stats.domElement.children[ 0 ].children[ 0 ].style.color = "#aaaaaa";
+				stats.domElement.children[ 0 ].style.background = "transparent";
+				stats.domElement.children[ 0 ].children[ 1 ].style.display = "none";
+
+				// EVENTS
+
+				window.addEventListener( 'resize', onWindowResize, false );
+				document.addEventListener( 'keydown', onKeyDown, false );
+				document.addEventListener( 'keyup', onKeyUp, false );
+
+				// CONTROLS
+
+				cameraControls = new THREE.TrackballControls( camera, renderer.domElement );
+				cameraControls.target.set( 0, 50, 0 );
+
+		
+
+			// CUBE(1,1,1,1,12,0.2,12,0,550,0);
+		   
+			 SPHERE_(3150,111,3150,12,1,1,1,'images/13.png');
+		
+			 PLANE_NOCOLIDE(-3150,2,3150,2,2,2,"textures/cube1/9.png");		 
+			 SPHERE_(-3150,111,3150,12,0.3,0.3,0.3,'textures/cube1/7.png');
+			 
+			 
+			 PLANE_NOCOLIDE(-3150,22,3150,1,1,1,"textures/cube1/9.png");
+				  
+				  
+				 
+		
+				  
+				  
+			///////////////////////////////////////////////////////////////////////////	
+			//3d obj  load obj function 
+			///////////////////////////////////////////////////////////////////////////	 
+	
+						
+						
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , 2000 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , 2300 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , 2600 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						
+						
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , -2000 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , -2300 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						OBJPREVIEW('models/modelpack24/judasC/judasc.obj','models/modelpack24/judasC/JudasC.bmp' , -2600 , 2 , 2000 , 0,90,0,0.5,0.5,0.5);
+						
+						
+						
+						//OBJPREVIEW('models/modelpack24/pillory/pillory.obj','models/modelpack24/pillory/pillory.bmp' , 1200 , 2 , 1000 , 0,90,0,0.5,0.5,0.5);
+						
+						
+						
+						//OBJPREVIEW('models/novi/obj/star_wars/s.obj','models/modelpack24/judasC/JudasC.bmp' , 1 , 2 , 1 , 0,90,0,-1,-1,-1);
+						
+				 
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang8/hang8.png' , 3300 , 110 , 3300 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang8/hang8.png' , -3300 , 110 , 3300 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang8/hang8.png' , 3300 , 110 , -3300 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang8/hang8.png' , -3300 , 110 , -3300 , 0,90,0,1,1,1,"NO");
+						 
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang6/hang6.png' , 3000 , 110 , 3000 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang6/hang6.png' , -3000 , 110 , 3000 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang6/hang6.png' , 3000 , 110 , -3000 , 0,90,0,1,1,1,"NO");
+						OBJPREVIEW('models/modelpack19/hang8/hang8.obj','models/modelpack19/hang6/hang6.png' , -3000 , 110 , -3000 , 0,90,0,1,1,1,"NO");
+		 
+			            OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3300 , 0 , 3300 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3000 , 0 ,  3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3300 , 0 ,  3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3000 , 0 , 3300 , 0,0,0,1,1,1);
+						
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3300 , 0 , 3300 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3000 , 0 ,  3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3300 , 0 ,  3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3000 , 0 , 3300 , 0,0,0,1,1,1);
+						
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3300 , 0 , -3300 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3000 , 0 , -3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3300 , 0 ,  -3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , 3000 , 0 , -3300 , 0,0,0,1,1,1);
+						
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3300 , 0 , -3300 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3000 , 0 , -3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3300 , 0 ,  -3000 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack1/model4/const.obj','models/modelpack1/model4/const.png' , -3000 , 0 , -3300 , 0,0,0,1,1,1);
+		
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -300 , 0 , 333 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -600 , 0 , 433 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -900 , 0 , 533 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -1200 , 0 , 633 , 0,0,0,5,5,5);
+				 
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 300 , 0 , 333 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 600 , 0 , 433 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 900 , 0 , 533 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 1200 , 0 , 633 , 0,0,0,5,5,5);
+						
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -300 , 0 , -333 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -600 , 0 , -433 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -900 , 0 , -533 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , -1200 , 0 , -633 , 0,0,0,5,5,5);
+						
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 300 , 0 , -333 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 600 , 0 , -433 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 900 , 0 , -533 , 0,0,0,5,5,5);
+						OBJPREVIEW('models/modelpack1/model1/pilaar.obj','models/modelpack1/model1/auvBG.png' , 1200 , 0 , -633 , 0,0,0,5,5,5);
+						
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , 700 , 0 , 700 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , -700 , 0 , 700 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , 700 , 0 , -700 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , -700 , 0 , -700 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , -900 , 0 , -900 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , 900 , 0 , 900 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , 900 , 0 , -900 , 0,0,0,1,1,1);
+						OBJPREVIEW('models/modelpack23/generator.obj','models/modelpack23/generator.bmp' , -900 , 0 , 900 , 0,0,0,1,1,1);
+						
+						 
+					    OBJPREVIEW('models/novi/obj/rimski.obj','models/modelpack24/judasC/JudasC.bmp' , 3330 , 2 , 110 , 0,90,0,22,22,22);
+						OBJPREVIEW('models/novi/obj/rimski.obj','models/modelpack24/judasC/JudasC.bmp' , 3330 , 2 , -110 , 0,90,0,22,22,22);
+						OBJPREVIEW('models/novi/obj/rimski.obj','models/modelpack24/judasC/JudasC.bmp' , 3000 , 2 , 110 , 0,90,0,22,22,22);
+						OBJPREVIEW('models/novi/obj/rimski.obj','models/modelpack24/judasC/JudasC.bmp' , 3000 , 2 , -110 , 0,90,0,22,22,22);
+						
+						 OBJPREVIEW('models/novi/obj/statue.obj','models/novi/obj/statue.png' ,3155 , 0 , 0 , 0,0,0,1,1,1);
+						 CILINDER(3150,110,0,0.1,22 ,11,GLOBAL_MATERIAL[4]);
+						   
+						 LOADER1("models/novi/js_obj/CATAPULL.js", "images/13.jpg" , 4000,0,4000 , 5,5,5 );  
+						 LOADER1("models/novi/js_obj/CATAPULL.js", "images/13.jpg" , 4200,0,4000 , 5,5,5 );  
+						 
+						 LOADER1("models/novi/js_obj/tris.js", "images/13.jpg" , 6250,70,-160 , 5,5,5 );  
+						   
+						   for (var i = 0,x=1,y=1;i<400;i=i+10) {
+						   
+						   if (i < 100) { x=x+40;}
+						   else if (i<200 && i >100) {y=y-40;}
+						   else if (i<300 && i >200) {x=x-40;}
+						   else if (i<400 && i >300) {y=y+40;}
+						  
+						   CUBE_NO_COLLIDE(x+6050,260,y,12,0.1,44,1);
+						   
+						    CILINDER(x+6050,260,y,0.1,22 ,121,GLOBAL_MATERIAL[0]);
+						   
+						   }
+						   
+						   
+						   		PLANE_NOCOLIDE(6110,0,-90,1,1,2,"images/14.png");
+						   
+						        
+								
+								 
+			///////////////////////////////////////////////////////////////////////////	
+			
+			// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER
+			//player
+			CONGO();
+			// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER// CHARACTER
+		
+			}
+
+			// EVENT HANDLERS
+
+			function onWindowResize( event ) {
+
+				SCREEN_WIDTH = window.innerWidth  - 10;
+				SCREEN_HEIGHT = window.innerHeight - 10;
+
+				renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+				camera.aspect = SCREEN_WIDTH/ SCREEN_HEIGHT;
+				camera.updateProjectionMatrix();
+
+			}
+
+			function onKeyDown ( event ) {
+              
+				switch( event.keyCode ) {
+                    
+					case 38: /*up*/
+					case 87: /*W*/ controls.moveForward = true;SENDER(2);  break;
+
+					case 40: /*down*/
+					case 83: /*S*/ 	 controls.moveBackward = true;SENDER(2);  break;
+
+					case 37: /*left*/
+					case 65: /*A*/   controls.moveLeft = true;SENDER(2); break;
+
+					case 39: /*right*/
+					case 68: /*D*/    controls.moveRight = true;SENDER(2); break;
+
+					case 67: /*C*/     controls.crouch = true;SENDER(2); break;
+					case 32: /*space*/ 
+					{  controls.stand = true; }
+					break;
+					case 17: /*ctrl*/  controls.attack = true; SENDER(2);
+					
+					break;
+
+				         }
+					  
+			};
+
+			function onKeyUp ( event ) { 
+			 SENDER(3);
+
+				switch( event.keyCode ) {
+
+					case 38: /*up*/
+					case 87: /*W*/ controls.moveForward = false; break;
+
+					case 40: /*down*/
+					case 83: /*S*/ 	 controls.moveBackward = false; break;
+
+					case 37: /*left*/
+					case 65: /*A*/ 	 controls.moveLeft = false; break;
+
+					case 39: /*right*/
+					case 68: /*D*/ 	  controls.moveRight = false; break;
+
+					//case 67: /*C*/     controls.crouch = false; break;
+					//case 32: /*space*/ controls.jump = false; break;
+				    case 17: /*ctrl*/  controls.attack = false; break;
+
+				}
+
+			};
+			//######################
+			// PUSH TO SERVER X_Y POS CHANGE
+			//######################
+			var TIMER,TRIG;TRIG=0;
+			function SENDER(INF){
+			
+			if (INF == 2) {
+			if (TRIG == 0) {
+			TIMER = setInterval(function(){publish();}, 20);
+			//console.log("FIRST_TIME_START");
+			TRIG=1;
+			}
+			}
+			if(INF == 3){
+			clearInterval(TIMER);
+			TRIG=0;
+			//console.log("DONT SEND ANYMORE");
+			}
+			
+			
+			}
+			//######################
+
+			function animate() {
+
+		
+				requestAnimationFrame( animate );
+				
+			    render();
+				 
+				try{
+				document.getElementById("XX").value = window["player"].position.x.toFixed(1);
+				document.getElementById("YY").value = window["player"].position.y.toFixed(1);
+				document.getElementById("ZZ").value = window["player"].position.z.toFixed(1);
+				}catch(e){
+				console.log("PLAYER_STELL_NOT_LOAD!");
+				}
+				
+				//stats.update();
+
+			}
+			
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+			var j = 0;
+			var ENERGY = ELE('HELT').value;
+			var STIT = ELE('STIT').value;
+			function render() {
+			/////////////////////////////////////////////////////////////
+			//Player code
+			/////////////////////////////////////////////////////////////
+			//renderer.shadowMapSoft = true;  
+			/////////////////////////////////////////////////////////////
+			var delta = clock.getDelta() / 20; // slow down 
+		    /////////////////////////////////////////////////////////////
+ 
+			/////////////////////////////////////////////////////////////
+			//nCharacters = 1
+			/////////////////////////////////////////////////////////////
+				for ( var i = 0; i < nCharacters; i ++ ) {
+				
+					 for (var ii=1; ii < EVERYOBJ.length;ii++) {
+					 
+					try {
+					if (typeof EVERYOBJ[ii] !== "undefined") {
+					
+					if ( window["player"].position.x  > EVERYOBJ[ii].position.x -120   &&    window["player"].position.x < EVERYOBJ[ii].position.x + 120 && window["player"].position.z  > EVERYOBJ[ii].position.z -120 &&    window["player"].position.z < EVERYOBJ[ii].position.z + 120 )  {
+					
+					console.log("GENERAL_COALIZ = 1");
+					GENERAL_COALIZ = 1;
+
+					if(ii == 1){objekat1.position = window["player"].position;ELE('STIT').value = 50; }
+					
+					
+					
+					if (window["player"].position.x < EVERYOBJ[ii].position.x) {
+					window["player"].position.x  = window["player"].position.x - 50;
+					}else {
+					window["player"].position.x  = window["player"].position.x + 50;
+					}
+
+					////////////////////////////////
+					// ENERGY 
+					////////////////////////////////
+					if (STIT == 0){
+					ENERGY = ELE('HELT').value;
+					ELE('HELT').value = ENERGY - 1;
+					}else { 
+					STIT = ELE('STIT').value;
+					ELE('STIT').value = STIT - 1;
+					}
+					////////////////////////////////
+					
+					} else {
+
+					////////////////////////////////
+					//general limit for table
+					////////////////////////////////
+					if (window["player"].position.x>10000  ) {  window["player"].position.x=10000;}					 
+					if (window["player"].position.x<-10000  ) {  window["player"].position.x=-10000;}					 
+					if (window["player"].position.z>10000  ) {  window["player"].position.z=10000;}					 
+					if (window["player"].position.z<-10000  ) {  window["player"].position.z=-10000;}					 
+					////////////////////////////////
+					
+					if (window["player"].position.x>6000 && window["player"].position.x<6300 && window["player"].position.z >-110 && window["player"].position.z<110 ) {objekat5.position = window["player"].position;	}					 
+				 	
+					
+					cameraControls.update( delta );
+					characters[ i ].update( delta ); 				
+                 
+				  objekat5.rotation.z = BR;
+				      objekat1.rotation.y = BR;//stit
+				 
+                      if (window["character1"+0] === null || window["character1"+0] === "undefined") { /*nothing*/ }
+					 else{ window["character1"+0].update( delta ); }
+					  if (window["character1"+1] === null || window["character1"+1] === "undefined") { /*nothing*/ }
+					 else{ window["character1"+1].update( delta ); }	     
+					  if (window["character1"+2] === null || window["character1"+2] === "undefined") { /*nothing*/ }
+					 else{ window["character1"+2].update( delta ); }
+					 
+					 
+					 
+				
+					}
+
+					
+					} 
+					  }catch(e) { }
+			//////////////////////////////////////////////////
+							}	
+			//////////////////////////////////////////////////
+					
+				//////////////////////////////////////////////////			
+					}
+				//////////////////////////////////////////////////
+				//////////////////////////////////////////////////
+				renderer.render( scene, camera );
+				//////////////////////////////////////////////////
+			}
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+			
+			//###########################################
+			// rotation in scene and for other effect 11msecund timer
+			//###########################################
+		var BR = 0;
+		    setInterval( 
+			    function TEST1 () {
+			    BR++; if (BR > 360) {BR =0;}
+            
+				objekat2.rotation.z = BR;//plavo
+				
+				
+ 
+			} , 55 );
+			//###########################################
+			
+			
+			
+		</script>
+	<!-- ##################################################################################################################### -->
+	<!-- ##################################################################################################################### -->
+	<!-- Networking - Multiplayer mode - Used JavaWebSocket client/server - channels plugin -->
+	<!-- ##################################################################################################################### -->
+	<!-- ##################################################################################################################### -->
+ 
+ 		<script type="text/javascript" language="JavaScript">
+        
+		var arrayID = new Array();
+		
+			var eLog = null,
+				eKeepAlive = null,
+				eMessage = null,
+				eChannelId = null,
+				eChannelName = null,
+				eAccessKey = null,
+				eSecretKey = null,
+				eIsPrivate = null,
+				eIsSystem = null,
+				eKeepAlive = null,
+				eChannelSel = null;
+
+			function log( aString ) {
+			try{
+				eLog.innerHTML +=
+					aString + "<br>";
+				if( eLog.scrollHeight > eLog.clientHeight ) {
+					eLog.scrollTop = eLog.scrollHeight - eLog.clientHeight;
+				}
+				}catch(e){}
+			}
+
+			function clearLog() {
+				eLog.innerHTML = "";
+				eLog.scrollTop = 0;
+			}
+
+			var lWSC = null;
+
+			function login() {
+				// URL is ws[s]://[hostname|localhost]:8787[/context][/servlet/][;args...]
+				// deprecated: JWS_SERVER_URL;
+				var lURL = jws.getDefaultServerURL();
+
+				log( "Login to " + lURL + " ..." );
+				try {
+					var lRes = lWSC.logon( lURL, jws.DEMO_ROOT_LOGINNAME, jws.DEMO_ROOT_PASSWORD, {
+
+						// OnOpen callback
+						OnOpen: function( aEvent ) {
+							log( "<font style='color:#888'>jWebSocket connection established.</font>" );
+							jws.$("simgStatus").src = "server/jWebSocketClient/jWebSocketClient/images/connected.png";
+						},
+
+						OnWelcome: function() {
+							getChannels();
+						},
+
+						// OnMessage callback
+						OnMessage: function( aEvent ,aToken) {  
+ 
+						if(typeof aToken.map === 'undefined'){
+						
+						//console.log('Server_SINH_no_Token');
+						
+						}
+						else if(typeof aToken.map !== 'undefined' || typeof aToken.map !== null ){
+						if ( aToken.map.net_ID != lWSC.getId() ) { //eliminate your's data only other
+						var buf = arrayID.indexOf(aToken.map.net_ID);   
+						if (buf == -1)   // Multiplayer buffer data 
+						{  
+						if (aToken.map.net_ID != null) { 
+						arrayID.push(aToken.map.net_ID);
+						CREATE_NET_PLAYER(arrayID.indexOf(aToken.map.net_ID));
+						scene.add(window["objekat_netPLAYER"+arrayID.indexOf(aToken.map.net_ID)].root);
+						
+						}
+						}
+						else 
+						{
+
+						window["objekat_netPLAYER"+arrayID.indexOf(aToken.map.net_ID)].root.position.x=aToken.map.pos_X;
+						window["objekat_netPLAYER"+arrayID.indexOf(aToken.map.net_ID)].root.position.z=aToken.map.pos_Y;
+						window["objekat_netPLAYER"+arrayID.indexOf(aToken.map.net_ID)].root.rotation.y=aToken.map.rot_Y;
+						//window["objekat_netPLAYER"+arrayID.indexOf(aToken.map.net_ID)].root.rotation.y=aToken.map.active_ANIM;
+						
+						}
+ 
+						
+	
+						}
+						}
+						//////////////
+						//
+						//////////////
+						 if (typeof  aEvent.data !== "undefined") { //console.log(aEvent.data);
+						var JSON_EVENT = aEvent.data;
+						var OBJ_EVENT = JSON.parse(JSON_EVENT);
+						var CHECK_ID = arrayID.indexOf(OBJ_EVENT.sourceId);// && CHECK_ID !== -1
+						if (OBJ_EVENT.type == "event" && OBJ_EVENT.name == "disconnect" ) {  
+						//DESTROY
+						
+						var local_index = arrayID.indexOf(OBJ_EVENT.sourceId);
+						scene.remove(window["objekat_netPLAYER"+local_index].root);
+						
+						arrayID.splice(arrayID.indexOf(OBJ_EVENT.sourceId),1);
+						
+						//console.log("EVENT END" + OBJ_EVENT.sourceId + ":" + CHECK_ID + "local_index" + local_index );
+						}
+						}
+						
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 					//	log( "<font style='color:#888'>jWebSocket message received: '" + aEvent.data + "'</font>" );
+						/* 	
+							if( lWSC.isLoggedIn() ) {
+								jws.$("simgStatus").src = "server/jWebSocketClient/jWebSocketClient/images/authenticated.png";
+							} else {
+								jws.$("simgStatus").src = "server/jWebSocketClient/jWebSocketClient/images/connected.png";
+							}
+							 
+							jws.$("slblClientId").innerHTML =
+								"&nbsp;Client&#x2011;Id:&nbsp;"
+								+ lWSC.getId() + "&nbsp;"
+								+ ( jws.browserSupportsNativeWebSockets ? "(native)" : "(flashbridge)" ); */
+						},
+//########################################################
+//########################################################
+// OnClose callback
+//########################################################
+//########################################################
+						OnClose: function( aEvent ) {
+							/*log( "<font style='color:#888'>jWebSocket connection closed.</font>" );
+							jws.$("simgStatus").src = "images/disconnected.png";
+							jws.$("slblClientId").innerHTML = "&nbsp;Client&#x2011;Id:&nbsp;-";*/
+						}
+
+					});
+				} catch( ex ) {
+					log( "Exception: " + ex.message );
+				}
+			}
+
+			// log out the client from the jWebSocket server
+			function logout() {
+				if( lWSC ) {
+					lWSC.stopKeepAlive();
+					log( "Disconnecting..." );
+					var lRes = lWSC.close({ timeout: 3000 });
+					log( lWSC.resultToString( lRes ) );
+				}
+			}
+
+			// try to create a new channel on the server
+			// on success the OnChannelCreated event is fired
+			function createChannel() {
+				var lChannelId = eChannelId.value;
+				var lChannelName = eChannelName.value;
+				var lIsPrivate = eIsPrivate.checked;
+				var lIsSystem = eIsSystem.checked;
+				var lAccessKey = eAccessKey.value;
+				var lSecretKey = eSecretKey.value;
+				log( "Creating channel '" + lChannelId + "'..." );
+				var lRes = lWSC.channelCreate(
+					lChannelId, 
+					lChannelName,
+					{	isPrivate: lIsPrivate,
+						isSystem: lIsSystem,
+						accessKey: lAccessKey,
+						secretKey: lSecretKey
+					}
+				);
+				log( lWSC.resultToString( lRes ) );
+			}
+
+/* 			// try to remove an existing channel on the server
+			// on success the OnChannelRemoved event is fired
+			function removeChannel() {
+				var lChannelId = eChannelId.value;
+				var lAccessKey = eAccessKey.value;
+				var lSecretKey = eSecretKey.value;
+				log( "Removing channel '" + lChannelId + "'..." );
+				var lRes = lWSC.channelRemove( 
+					lChannelId,
+					{	accessKey: lAccessKey,
+						secretKey: lSecretKey
+					}
+				);
+				log( lWSC.resultToString( lRes ) );
+			} */
+
+			// try to subscribe at a certain channel
+			function subscribeChannel() {
+				var lChannel = eChannelSel.value;
+				var lAccessKey = eAccessKey.value;
+				log( "Subscribing at channel '" + lChannel + "'..." );
+				var lRes = lWSC.channelSubscribe( lChannel, lAccessKey );
+				log( lWSC.resultToString( lRes ) );
+			}
+
+/* 			// try to unsubscribe from a certain channel
+			function unsubscribeChannel() {
+				var lChannel = eChannelSel.value;
+				log( "Unsubscribing from channel '" + lChannel + "'..." );
+				var lRes = lWSC.channelUnsubscribe( lChannel );
+				log( lWSC.resultToString( lRes ) );
+			} */
+
+			// try to authenticate against a channel to publish data
+			function auth() {
+				var lChannel = eChannelSel.value;
+				var lAccessKey = eAccessKey.value;
+				var lSecretKey = eSecretKey.value;
+				log( "Authenticating against channel '" + lChannel + "'..." );
+				// use access key and secret key for this channel to authenticate
+				// required to publish data only
+				var lRes = lWSC.channelAuth( lChannel, lAccessKey, lSecretKey );
+				log( lWSC.resultToString( lRes ) );
+				
+				//hard code
+				ELE('mask_body').style.display = "none";
+				ELE('login_start').style.display = "none";
+			}
+
+			// try to publish data on a certain channel
+			function publish() {
+try{		
+				var lChannel = eChannelSel.value;
+			//	log( ">" + lChannel + "'." );
+				var lRes = lWSC.channelPublish( lChannel, eMessage.value, {
+					pos_X: window["player"].position.x,
+					pos_Y: window["player"].position.z,
+					net_ID:lWSC.getId(),
+					rot_Y: window["player"].rotation.y,
+					active_Anim: character.activeAnimation
+					//field2: [ "item1", "item2" ] 
+				});
+			//	log( lWSC.resultToString( lRes ) );
+}catch(e){}
+			}
+
+			// try to obtain all available channels on the server
+			function getChannels() {
+				log( "Trying to obtain channels..." );
+				var lRes = lWSC.channelGetIds();
+				log( lWSC.resultToString( lRes ) );
+			} 
+
+			// try to obtain all subscribers for a certain channel
+/* 			function getSubscribers() {
+				var lChannel = eChannelSel.value;
+				var lAccessKey = eAccessKey.value;
+				log( "Trying to obtain subscribers for channel '" + lChannel + "'..." );
+				var lRes = lWSC.channelGetSubscribers(lChannel, lAccessKey);
+				log( lWSC.resultToString( lRes ) );
+			} */
+
+/* 			// try to obtain all channels the client has subscribed to
+			function getSubscriptions() {
+				log( "Trying to obtain subscriptions for client..." );
+				var lRes = lWSC.channelGetSubscriptions();
+				log( lWSC.resultToString( lRes ) );
+			} */
+
+			function toggleKeepAlive() {
+				if( eKeepAlive.checked ) {
+					lWSC.startKeepAlive({ interval: 3000 });
+				} else {
+					lWSC.stopKeepAlive();
+				}
+			}
+
+			// this method is called when a new channel has been created on the server
+			// add the new channel to the drop down box on the client as well
+			function onChannelCreatedObs( aEvent ) {
+				var lOption = document.createElement("option");
+				lOption.value = aEvent.channelId;
+				lOption.text = aEvent.channelName;
+				eChannelSel.appendChild(lOption);
+			}
+
+  			// this method is called when a channel has been removed from the server
+			// remove the channel from the drop down box on the client as well
+			function onChannelRemovedObs( aEvent ) {
+				for( var lIdx = 0, lCnt = eChannelSel.options.length; lIdx < lCnt; lIdx++ ) {
+					var lOption = eChannelSel.options[ lIdx ];
+					if( lOption.value == aEvent.channelId ) {
+						eChannelSel.removeChild(lOption);
+						break;
+					}
+				}
+			}  
+
+			// this method is called when a channel has been removed from the server
+			// remove the channel from the drop down box on the client as well
+			function onChannelsReceivedObs( aEvent ) {
+				// remove all existing channels in drop down box
+				while( eChannelSel.options.length > 0 ) {
+					var lOption = eChannelSel.options[ 0 ];
+					eChannelSel.removeChild(lOption);
+				}
+				// add all channels from event
+				for( var lIdx = 0, lCnt = aEvent.channels.length; lIdx < lCnt; lIdx++ ) {
+					var lOption = document.createElement("option");
+					lOption.value = aEvent.channels[ lIdx ].id;
+					lOption.text = aEvent.channels[ lIdx ].name;
+					eChannelSel.appendChild(lOption);
+				}
+			}
+
+			function initPage() {
+				eLog = jws.$( "sdivChat" );
+				eMessage = jws.$( "stxfMsg" );
+				eChannelId = jws.$( "stxfChannelId" );
+				eChannelName = jws.$( "stxfChannelId" );
+				eAccessKey = jws.$( "stxfAccessKey" );
+				eSecretKey = jws.$( "stxfSecretKey" );
+				eIsPrivate = jws.$( "schkPrivate" );
+				eIsSystem = jws.$( "schkSystem" );
+				eKeepAlive =  jws.$( "schkKeepAlive" );
+				eChannelSel = jws.$( "sselChannel" );
+
+				if( window.WebSocket ) {
+					lWSC = new jws.jWebSocketJSONClient();
+					lWSC.setChannelCallbacks({
+						OnChannelCreated: onChannelCreatedObs,
+						OnChannelRemoved: onChannelRemovedObs,
+						OnChannelsReceived: onChannelsReceivedObs
+					});
+				} else {
+					jws.$( "sbtnConnect" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnDisconnect" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnClear" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnSubscribe" ).setAttribute( "disabled", "disabled" );
+					jws.$( "sbtnUnsubscribe" ).setAttribute( "disabled", "disabled" );
+					jws.$( "schkKeepAlive" ).setAttribute( "disabled", "disabled" );
+
+					var lMsg = jws.MSG_WS_NOT_SUPPORTED;
+					alert( lMsg );
+					log( lMsg );
+				}
+			}
+
+			function exitPage() {
+				lWSC.stopKeepAlive();
+				logout();
+			}
+
+			
+			function networklog(){
+			
+			if (ELE("sdivChat").style.display == "none") {ELE("sdivChat").style.display = "block"; }else{ELE("sdivChat").style.display="none";}
+			
+			}
+			
+			function LOADING(){
+			ELE("sbtnConnect").value = "LOADING";
+			}
+			
+		</script>
+  
+		<div id="sdivChat" class="sdivContainer"
+			 style="position:relative; height:300px; overflow:auto;display:none;">
+		</div>
+ 
+ <div id="mask_body" style="z-index:1;width:100%;height:100%;position:absolute;left:0;top:0;opacity:0.5;background:#666666;"></div>
+<div id="login_start" style="z-index:2;opacity:1;position:absolute;left:350px;top:100px;background:#000000;text-align:center;width:600px;height:330px;border:solid 1px lime;-webkit-border-top-right-radius:22px;" >
+
+<input style="margin-left:0;margin-top:10px;width:200px;height:121px;color:lime;background-color:black;border:solid 1px lime;"  id="sbtnConnect" type="button" value="PLAY GAME" onclick="LOADING();login();setTimeout(function(){subscribeChannel();auth();},3300);" title="PLAY GAME"/>
+
+<div id="SCROLLDIV" style="width:100%;height:120px;overflow:auto;" >
+<br/>
+***
+<br/>
+<a href="http://threejs.org/examples/webgl_morphtargets_md2_control.html" >based on three.js examples</a>
+<br/>
+<a href="http://jwebsocket.org/" >Network: JavaWebSocketServer/client</a>
+<br/>
+<a href="https://code.google.com/p/threenidza/" >download code</a>
+<br/>
+<!--iframe id="logo_nidza" style="position:absolute;left:10px;top:10px;width:100px;height:100px;" src="http://zver.netfast.org/"  frameBorder="0" ></iframe-->
+<br/>
+--------------------------<br/>
+<color color="red">Read more about jwebsocket if you wanna start up game server!</color>
+<br/>
+3d used from :<a href="http://www.md2.sitters-electronics.nl/" >http://www.md2.sitters-electronics.nl/</a>
+<br/>
+***
+More from zlatnaspirala@gmail.com***<br/>
+<a href="http://zlatnaspirala.netfast.org/index.html" >Fastest first person camera based on glmatrix</a>
+<br/>
+***
+</div>
+<script>
+ 
+</script>
+
+</div>
+
+<!--div style="position:absolute;botton:0px;">
+<div onclick="networklog();" >network log</div>
+</div-->
+
+
+		<div class="sdivContainer" style="display:none;" >
+			<table class="stlbDlg" border="0" cellpadding="3" cellspacing="0" width="100%">
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">
+						
+					</td>
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnSubscribe" type="button" value="Subscribe" onclick="subscribeChannel();"
+							   title="Subscribes this client to the selected channel.">
+					</td>
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnGetSubscribers" type="button" value="Subscribers" onclick="getSubscribers();"
+							   title="Returns all subscribers of the selected channel.">
+					</td>
+					<td width="5">
+						<select id="sselChannel" title="Channel to subscribe to or unsubscribe from.">
+							<!--
+							not required to set fix channels here, 
+						   -->
+						</select>
+					</td>
+					<td width="70">
+						<input class="stxfDlg" id="stxfAccessKey" type="text" value="access" style="width:99%"
+							   title="Access Key to authorize publish operations.">
+					</td>
+					<td width="70">
+						<input class="stxfDlg" id="stxfChannelId" type="text" value="id" style="width:99%"
+							   title="Channel identifier to create or remove channels.">
+					</td>
+					<td class="stdDlg" width="5">
+						&nbsp;Private
+					</td>
+					<td class="stdDlg" width="5">
+						<input id="schkPrivate" type="checkbox" value="off"
+							   title="Specifies if the new channel is a private (or public) channel. ">
+					</td>
+					<td width="">
+						<input class="sbtnDlg" id="sbtnCreate" type="button" value="Create" onclick="createChannel();"
+							   title="Creates a new channel with the given name.">
+					</td>
+					<td width="5">
+						&nbsp;
+					</td>
+				</tr>
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnDisconnect" type="button" value="Logout" onclick="logout();"
+							   title="Logs you out and disconnects from the jWebSocket server.">
+					</td>
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnUnsubscribe" type="button" value="Unsubscribe" onclick="unsubscribeChannel();"
+							   title="Unsubscribes this client from the selected channel.">
+					</td>
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnGetSubscriptions" type="button" value="Subscriptions" onclick="getSubscriptions();"
+							   title="Returns all subscriptions of the current client.">
+					</td>
+					<td width="5">
+						<input class="sbtnDlg" id="sbtnAuth" type="button" value="Auth" onclick="auth();"
+							   title="Authenticates the user against the selected channel to publish messages on it.">
+					</td>
+					<td width="70">
+						<input class="stxfDlg" id="stxfSecretKey" type="text" value="secret" style="width:99%"
+							   title="Access Secret to authorize publish operations.">
+					</td>
+					<td width="70">
+						<input class="stxfDlg" id="stxfChannelName" type="text" value="name" style="width:99%"
+							   title="Channel name to create new channels.">
+					</td>
+					<td class="stdDlg" width="5">
+						&nbsp;System
+					</td>
+					<td class="stdDlg" width="5">
+						<input id="schkSystem" type="checkbox" value="off"
+							   title="Specifies if the new channel is a system or user/application channel.">
+					</td>
+					<td width="">
+						<input class="sbtnDlg" id="sbtnRemove" type="button" value="Remove" onclick="removeChannel();"
+							   title="Removes the channel with the given name.">
+					</td>
+					<td width="5">
+						&nbsp;
+					</td>
+				</tr>
+				<tr class="strDlg">
+					<td class="stdDlg" width="5">
+						<input class="sbtnDlg" id="sbtnClear" type="button" value="Clear Log" onclick="clearLog();"
+							   title="Clears the result and event log above.">
+					</td>
+					<td width="5">
+						<input class="sbtnDlg" id="sbtnGetChannels" type="button" value="Get Channels" onclick="getChannels();"
+							   title="Returns a list of available channels on the server.">
+					</td>
+					<td width="" colspan="7">
+						<input class="stxfDlg" id="stxfMsg" type="text" value="" style="width:99%"
+							   title="Message to be broadcasted on the selected channel.">
+					</td>
+					<td width="5">
+						<input class="sbtnDlg" id="sbtnPublish" type="button" value="Publish" onclick="publish();"
+							   title="Broadcasts the message on the selected channel.">
+					</td>
+				</tr>
+			</table>
+		</div>
+ 
+ 
+ 
+ 	<!-- ##################################################################################################################### -->
+	<!-- ##################################################################################################################### -->
+ 
+	</body>
+</html>

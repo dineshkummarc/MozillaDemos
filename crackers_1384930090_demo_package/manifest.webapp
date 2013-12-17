@@ -1,0 +1,15 @@
+{
+  "version" : "0.1",
+  "name": "ചൈനീസ് പടക്കം",
+  "type": "privileged",
+  "description": "An HTML5 fire app",
+  "launch_path": "/index.html",
+ "icons": {
+    "60": "/icon-60.png",
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "kallan"
+    }
+
+  }

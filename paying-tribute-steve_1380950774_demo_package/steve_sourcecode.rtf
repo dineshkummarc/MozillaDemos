@@ -1,0 +1,266 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang9\f0\fs22 <!DOCTYPE>\par
+<html>\par
+<head>\par
+<title>HTML5: Animated Candle | Vivax Solutions</title>\par
+<style type="text/css">\par
+body\{margin:0px;padding:0px;\par
+\}\par
+#top\{\par
+\tab margin: 0px;\par
+\tab padding: 0px;\par
+\tab background: #0A2B3E;\par
+\tab font-family: Georgia, "Times New Roman", Times, serif;\par
+\tab font-size: 12px;\par
+\tab color: #7C95A5;\par
+\tab height:130px;\par
+\tab margin-bottom:20px;\par
+\par
+\}\par
+.main \{\par
+\tab text-shadow: 2px 2px 2px #800000;\par
+\tab font-size: 20px;\par
+\tab color: #FFFFFF;\par
+\tab background-color:#FF0000;\par
+\tab width:80%;\par
+\tab height:100px;\par
+    border-radius:10px;\par
+\tab margin-left:auto;\par
+\tab margin-right:auto;\par
+\tab position:relative;\par
+\tab top:15px;\par
+\}\par
+.content\{\par
+margin-left:auto;margin-right:auto;width:400px;text-align:center;\par
+\}\par
+.heading\{\par
+margin-left:auto;margin-right:auto;background-color:blue;width:400px;padding:10px;color:white;font-size:larger;border-radius:5px;text-align:center;\par
+\}\par
+h1, h3 \{\par
+text-align:center;\par
+\}\par
+</style>\par
+</head>\par
+<body>\par
+<div id="top">\par
+<div class="main">\par
+<h1>Vivax Solutions</h1>\par
+<h3><em>www.vivaxsolutions.com</em></h3>\par
+</div>\par
+</div>\par
+ <p class="heading">Paying Tribute to Steve Jobs - 2<sup>nd</sup> Death Anniversary</p>\par
+ <div class="content">\par
+    <canvas id="Canvas_One" width="400" height="300" style="border:solid lightblue 2px;background-image:url('sj.jpg');" onclick="window.setInterval('drawing()',10)"></canvas>\par
+\tab <br /><br />\par
+\tab </div>\par
+    <script type="text/javascript">\par
+      var canvas = document.getElementById('Canvas_One');\par
+      var context = canvas.getContext('2d');\par
+\tab   var a=0;var b=0.1;\par
+\tab   \tab   // top of the candle\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(190,180);\par
+\tab   context.arc(200,180,22,0,Math.PI+0.1,false);\par
+\tab   context.fillStyle='lightgrey';\par
+\tab   context.fill();\par
+\tab   // wax\par
+\tab   context.beginPath()\par
+\tab   context.moveTo(180,160);\par
+\tab   context.rect(180,180,40,130);\par
+      context.fillStyle = 'lightgrey';\par
+\tab   context.fill();\par
+\tab   // the wick\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(197,165);\par
+\tab   context.fillStyle="black";\par
+\tab   context.fill();\par
+\tab   context.fillRect(197,165,5,15);\par
+\tab   context.closePath();\par
+\par
+\tab   function drawing()\{\par
+\tab   a=a+b;\par
+\tab   if(a>=3)\{b=-0.1;\}\par
+\tab   if(a<=-3)\{b=0.1;\}\par
+\tab   // clear canvas\par
+\tab   context.clearRect(0,0,400,300);\par
+\tab   // top of the candle\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(190,180);\par
+\tab   context.arc(200,180,22,0,Math.PI+0.1,false);\par
+\tab   context.fillStyle='lightgrey';\par
+\tab   context.fill();\par
+\tab   \par
+\tab   //yellow part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(188,190);\par
+\tab   context.quadraticCurveTo(200+a,18-a,212,190);\par
+\tab   context.closePath();\par
+\tab   context.fillStyle="#FFEE00";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   //white part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(193,180);\par
+\tab   context.quadraticCurveTo(200+a,25-a,207,180);\par
+\tab   context.closePath();\par
+\tab   context.fillStyle="#E9DD00";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   // blue part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(194,180);\par
+\tab   context.quadraticCurveTo(200+a,90+a,206,180);\par
+\tab   context.fillStyle="rgba(0,0,255,0.8)";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   // wax\par
+\tab   context.beginPath()\par
+\tab   context.moveTo(180,180);\par
+\tab   context.rect(180,180,40,130);\par
+      context.fillStyle = 'lightgrey';\par
+\tab   context.fill();\par
+\tab   // the wick\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(197,165);\par
+\tab   context.fillStyle="black";\par
+\tab   context.fill();\par
+\tab   context.fillRect(197,165,5,15);\par
+\tab   context.closePath();\par
+\par
+\tab   \}\par
+    </script>\par
+ </body>\par
+ </html><!DOCTYPE>\par
+<html>\par
+<head>\par
+<title>HTML5: Animated Candle | Vivax Solutions</title>\par
+<style type="text/css">\par
+body\{margin:0px;padding:0px;\par
+\}\par
+#top\{\par
+\tab margin: 0px;\par
+\tab padding: 0px;\par
+\tab background: #0A2B3E;\par
+\tab font-family: Georgia, "Times New Roman", Times, serif;\par
+\tab font-size: 12px;\par
+\tab color: #7C95A5;\par
+\tab height:130px;\par
+\tab margin-bottom:20px;\par
+\par
+\}\par
+.main \{\par
+\tab text-shadow: 2px 2px 2px #800000;\par
+\tab font-size: 20px;\par
+\tab color: #FFFFFF;\par
+\tab background-color:#FF0000;\par
+\tab width:80%;\par
+\tab height:100px;\par
+    border-radius:10px;\par
+\tab margin-left:auto;\par
+\tab margin-right:auto;\par
+\tab position:relative;\par
+\tab top:15px;\par
+\}\par
+.content\{\par
+margin-left:auto;margin-right:auto;width:400px;text-align:center;\par
+\}\par
+.heading\{\par
+margin-left:auto;margin-right:auto;background-color:blue;width:400px;padding:10px;color:white;font-size:larger;border-radius:5px;text-align:center;\par
+\}\par
+h1, h3 \{\par
+text-align:center;\par
+\}\par
+</style>\par
+</head>\par
+<body>\par
+<div id="top">\par
+<div class="main">\par
+<h1>Vivax Solutions</h1>\par
+<h3><em>www.vivaxsolutions.com</em></h3>\par
+</div>\par
+</div>\par
+ <p class="heading">Paying Tribute to Steve Jobs - 2<sup>nd</sup> Death Anniversary</p>\par
+ <div class="content">\par
+    <canvas id="Canvas_One" width="400" height="300" style="border:solid lightblue 2px;background-image:url('sj.jpg');" onclick="window.setInterval('drawing()',10)"></canvas>\par
+\tab <br /><br />\par
+\tab </div>\par
+    <script type="text/javascript">\par
+      var canvas = document.getElementById('Canvas_One');\par
+      var context = canvas.getContext('2d');\par
+\tab   var a=0;var b=0.1;\par
+\tab   \tab   // top of the candle\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(190,180);\par
+\tab   context.arc(200,180,22,0,Math.PI+0.1,false);\par
+\tab   context.fillStyle='lightgrey';\par
+\tab   context.fill();\par
+\tab   // wax\par
+\tab   context.beginPath()\par
+\tab   context.moveTo(180,160);\par
+\tab   context.rect(180,180,40,130);\par
+      context.fillStyle = 'lightgrey';\par
+\tab   context.fill();\par
+\tab   // the wick\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(197,165);\par
+\tab   context.fillStyle="black";\par
+\tab   context.fill();\par
+\tab   context.fillRect(197,165,5,15);\par
+\tab   context.closePath();\par
+\par
+\tab   function drawing()\{\par
+\tab   a=a+b;\par
+\tab   if(a>=3)\{b=-0.1;\}\par
+\tab   if(a<=-3)\{b=0.1;\}\par
+\tab   // clear canvas\par
+\tab   context.clearRect(0,0,400,300);\par
+\tab   // top of the candle\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(190,180);\par
+\tab   context.arc(200,180,22,0,Math.PI+0.1,false);\par
+\tab   context.fillStyle='lightgrey';\par
+\tab   context.fill();\par
+\tab   \par
+\tab   //yellow part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(188,190);\par
+\tab   context.quadraticCurveTo(200+a,18-a,212,190);\par
+\tab   context.closePath();\par
+\tab   context.fillStyle="#FFEE00";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   //white part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(193,180);\par
+\tab   context.quadraticCurveTo(200+a,25-a,207,180);\par
+\tab   context.closePath();\par
+\tab   context.fillStyle="#E9DD00";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   // blue part of flame\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(194,180);\par
+\tab   context.quadraticCurveTo(200+a,90+a,206,180);\par
+\tab   context.fillStyle="rgba(0,0,255,0.8)";\par
+\tab   context.fill();\par
+\tab   \par
+\tab   // wax\par
+\tab   context.beginPath()\par
+\tab   context.moveTo(180,180);\par
+\tab   context.rect(180,180,40,130);\par
+      context.fillStyle = 'lightgrey';\par
+\tab   context.fill();\par
+\tab   // the wick\par
+\tab   context.beginPath();\par
+\tab   context.moveTo(197,165);\par
+\tab   context.fillStyle="black";\par
+\tab   context.fill();\par
+\tab   context.fillRect(197,165,5,15);\par
+\tab   context.closePath();\par
+\par
+\tab   \}\par
+    </script>\par
+ </body>\par
+ </html>\par
+}
+ 

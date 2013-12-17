@@ -1,0 +1,308 @@
+html, body {
+	width:100%;
+	margin:0;
+	padding:0;
+	text-align: center;
+	color: white;
+	font-family: 'Cagliostro', sans-serif;
+}
+
+html {
+	min-height:100%;
+	background: #23AC28;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+a {
+	color:black;
+}
+
+a img {
+	border:0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+select {
+	background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+	font-size:0.9em;
+	margin-bottom:5px;
+}
+
+button {
+	border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	background: green;
+    background: linear-gradient(to bottom, #23AC28, #348A30);
+	background: -webkit-linear-gradient(bottom, #23AC28, #348A30);
+	background: -ms-linear-gradient(bottom, #23AC28, #348A30);
+
+	color: white;
+	font-size: 1.1em;
+    line-height: 1.1em;
+	cursor: pointer;
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+button:disabled, button:disabled:hover {
+	background: gray;
+}
+
+button:hover {
+	background: linear-gradient(to bottom, #254624, #348A30);
+	background: -webkit-linear-gradient(bottom, #254624, #348A30);23AC28
+	background: -ms-linear-gradient(bottom, #254624, #348A30);
+}
+
+#page {
+	margin:0 auto 0 auto;
+	max-width: 800px;
+	background:none;
+}
+
+#page > div, #page > section {
+	clear: both;
+	display:block;
+}
+
+#titolo {
+	float:left;
+	width: 200px;
+	
+	height: 100px;	
+	margin:30px 0 0 0;
+}
+
+#titolo img {
+	margin:0;
+	padding:0;
+}
+
+#menuOpzioni {
+	float:right;
+	text-align:center;
+	padding:0 5px 0 5px;
+	width:550px;
+	margin-bottom:5px;
+}
+
+#menuOpzioni > button {
+	vertical-align: middle;
+}
+
+fieldset, .container {
+	border:1px solid black;
+	border-radius: 2px;
+	padding:5px;
+	position:relative;
+}
+
+.msgHeader {
+	color: white;
+	display:inline-block;
+	background-color: green;
+    background: linear-gradient(to bottom, #51A351, #008000);
+	background: -webkit-linear-gradient(bottom, #51A351, #008000);
+	background: -ms-linear-gradient(bottom, #51A351, #008000);
+	padding: 5px; 
+	border-radius:5px;
+	margin-bottom:3px;
+}
+
+.msgHeader a {
+	color: white;
+}
+
+
+.listaRadio {
+	width:99%;
+	border-radius:5px;
+	border:1px solid black;
+	word-wrap:break-word;
+	background:white;
+	min-height: 99%;
+}
+
+.listaRadio span {
+	display:block;
+	margin:1px auto 1px auto;
+	padding-left:2px;
+	text-align:left;
+	font-size:1.2em;
+	line-height:1.3em;
+	clear:both;
+}
+
+.listaRadio a {
+	text-decoration:none;
+	color: green;
+}
+
+.listaRadio img {
+	border:0;
+	margin:2px;
+	cursor:pointer;
+	float: right;
+}
+
+.listaRadio a:hover, .listaRadio a:active {
+	background: green;
+	color: white;
+}
+
+#iframeRadio {
+	border:0;
+	margin:auto;
+	border:1px solid black;
+	border-radius:3px;
+	background:white;
+}
+
+.fadein {
+	transition-property: opacity;
+	transition-duration: .5s;
+}
+
+.share {
+	transition:all 200ms;
+	cursor: pointer;
+	vertical-align:middle;
+	transform: scale(1);
+	-ms-transform: scale(1);
+	-webkit-transform: scale(1);
+}
+
+.share:hover {
+	transform: scale(1.20);
+	-ms-transform: scale(1.20); /* IE 9 */
+	-webkit-transform: scale(1.20); /* Safari and Chrome */
+}
+
+#ui-id-1 {
+	max-height: 100px;
+	overflow: auto;
+}
+
+#agenda table {
+	border:1px solid black;
+	border-radius: 4px 4px 4px 4px;
+	width:100px; 
+	float:left;
+}
+#agenda td {
+	border:1px solid black;
+	background:white;
+	color: green;
+}
+
+#agenda td img {
+	cursor: pointer;
+}
+
+.backPanel {
+	display:none;
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-color:rgba(255,255,255,0.4)
+}
+
+.ruota {
+	 transition: all 1s ease 0s;
+}
+.ruota:hover {
+	 transform: rotate(180deg);
+}
+
+#addRadioPanel input[type=text] {
+	width:210px;
+}
+
+.bgPanel {
+	background: #23AC28;	
+	background: linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+}
+
+/* BkGround che cambia*/
+.htmlBg1 {
+	background: linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(135deg, #004003 0%, #78F170 100%, #23AC28 100%) repeat scroll 0 0 transparent;
+}
+.htmlBg2 {
+	background: linear-gradient(130deg, #004003 2%, #78F170 95%, #23AC28 97%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(130deg, #004003 2%, #78F170 95%, #23AC28 97%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(130deg, #004003 2%, #78F170 95%, #23AC28 97%) repeat scroll 0 0 transparent;
+}
+.htmlBg3 {
+	background: linear-gradient(125deg, #004003 5%, #78F170 90%, #23AC28 95%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(125deg, #004003 5%, #78F170 90%, #23AC28 95%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(125deg, #004003 5%, #78F170 90%, #23AC28 95%) repeat scroll 0 0 transparent;
+}
+.htmlBg4 {
+	background: linear-gradient(120deg, #004003 8%, #78F170 85%, #23AC28 92%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(120deg, #004003 8%, #78F170 85%, #23AC28 92%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(120deg, #004003 8%, #78F170 85%, #23AC28 92%) repeat scroll 0 0 transparent;
+}
+.htmlBg5 {
+	background: linear-gradient(115deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(115deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(115deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+}
+.htmlBg6 {
+	background: linear-gradient(125deg, #004003 12%, #78F170 70%, #23AC28 87%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(125deg, #004003 12%, #78F170 70%, #23AC28 87%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(125deg, #004003 12%, #78F170 70%, #23AC28 87%) repeat scroll 0 0 transparent;
+}
+.htmlBg7 {
+	background: linear-gradient(135deg, #004003 15%, #78F170 60%, #23AC28 85%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(135deg, #004003 15%, #78F170 60%, #23AC28 85%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(135deg, #004003 15%, #78F170 60%, #23AC28 85%) repeat scroll 0 0 transparent;
+}
+.htmlBg8 {
+	background: linear-gradient(145deg, #004003 12%, #78F170 60%, #23AC28 87%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(145deg, #004003 12%, #78F170 60%, #23AC28 87%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(145deg, #004003 12%, #78F170 60%, #23AC28 87%) repeat scroll 0 0 transparent;
+}
+.htmlBg9 {
+	background: linear-gradient(150deg, #004003 15%, #78F170 70%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(150deg, #004003 15%, #78F170 70%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(150deg, #004003 15%, #78F170 70%, #23AC28 90%) repeat scroll 0 0 transparent;
+}
+.htmlBg10 {
+	background: linear-gradient(160deg, #004003 12%, #78F170 70%, #23AC28 92%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(160deg, #004003 12%, #78F170 70%, #23AC28 92%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(160deg, #004003 12%, #78F170 70%, #23AC28 92%) repeat scroll 0 0 transparent;
+}
+.htmlBg11 {
+	background: linear-gradient(155deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(155deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(155deg, #004003 10%, #78F170 80%, #23AC28 90%) repeat scroll 0 0 transparent;
+}
+.htmlBg12 {
+	background: linear-gradient(150deg, #004003 7%, #78F170 90%, #23AC28 93%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(150deg, #004003 7%, #78F170 90%, #23AC28 93%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(150deg, #004003 7%, #78F170 90%, #23AC28 93%) repeat scroll 0 0 transparent;
+}
+.htmlBg13 {
+	background: linear-gradient(140deg, #004003 2%, #78F170 95%, #23AC28 97%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(145deg, #004003 5%, #78F170 93%, #23AC28 95%) repeat scroll 0 0 transparent;
+	background: -ms-linear-gradient(145deg, #004003 5%, #78F170 93%, #23AC28 95%) repeat scroll 0 0 transparent;
+}
+
+
+.scrollbar {
+	overflow:auto;
+	position:relative;
+}

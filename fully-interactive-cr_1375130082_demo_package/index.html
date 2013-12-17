@@ -1,0 +1,329 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Interactive crossword puzzle with html5 | Vivax Solutions</title>
+<style type="text/css">
+html, body{
+margin:0px;padding-left:0px;padding-top:0px;padding-bottom:10px;height:100%;
+}
+	#puzzle{float:left;margin:10px;}
+	#clues{float:left;margin:10px;}
+     #div1, #div2, #div3, #div4,#div5, #div6, #div7,#div8, #div9,#div10,#div11, #div12, #div13,#div14,#div15, #div16, #div17,#div18, #div19, #div20, #div21, #div22,#div23,#div24,
+     #div25, #div26, #div27, #div28, #div29, #div30,
+	 #div31, #div32, #div33, #div34,#div35, #div36, #div37,#div38, #div39,#div40,#div41, #div42, #div43,#div44,#div45, #div46, #div47,#div48, #div49, #div50, #div51, #div52,#div53,#div54
+    {float:left; width:40px; height:40px; margin:0px;padding:2px;border:1px solid black;font-size:12px;font-weight:bold;}
+    #div6, #div7,#div9,#div11, #div13,#div15,#div19,#div21,#div22,#div23,#div29,#div31,#div35,#div36,div39,#div43,#div47,#div48,#div52,#div53,#div54{background-color:black;}
+
+#header{
+    background: #0A2B3E;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #7C95A5;
+	height:60px;
+	padding-top:8px;
+	width:100%;
+}
+
+#sub_header{
+    background: #FF0000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	height:50px;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius:5px;
+    padding-top:5px;
+}
+
+#page{
+width:960px;
+margin-left:auto;margin-right:auto;padding-top:5px;padding-bottom:5px;
+}
+
+#content_left{
+width:150px;
+//height:600px;
+float:left;
+margin-bottom:10px;
+}
+#content_middle{
+width:350px
+//height:600px;
+float:left;
+margin-left:30px;
+margin-bottom:5px;
+}
+
+#content_right{
+width:300px;
+float:left;
+padding-left:10px;
+margin-left:30px;
+margin-bottom:10px;
+}
+#footer{
+clear:both;
+bottom:0px;
+height:40px;
+left:0px;
+margin-top:15px;
+}
+h1,h3{
+margin-left:auto;margin:auto; text-align:center;
+}
+#heading{
+margin-left:auto;margin-right:auto;text-align:center;background-color:#0000FF;font-weight:bold;color:#FFFFFF;border-radius:5px;width:320px;font-size:large;padding:3px;
+}
+#ans{
+margin-top:5px;color:#FFFFFF;
+}
+</style>
+<script type="text/javascript">
+    h = 0;
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("Text", ev.target.id);
+		ev.dataTrasnfer.effectAllowed='copy';
+
+    }
+
+    function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+		    ev.dataTransfer.dropEffect='copy';
+            ev.target.appendChild(document.getElementById(data).cloneNode(true));
+ 
+    }
+    function drop1(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+		    ev.dataTransfer.dropEffect='move';
+            ev.target.appendChild(document.getElementById(data));
+ 
+    }
+    function answers(){
+	document.getElementById('ans').style.color='#000000';
+	}
+
+</script>
+
+</head>
+<body>
+<div id="header">
+<div id="sub_header">
+<h1>Vivax Solutions</h1>
+<h3><em>www.vivaxsolutions.com</em></h3>
+</div>
+</div>
+<div id="page">
+<p id="heading">Hilariously Simple Crossword Puzzle</p>
+<div id="content_left">
+<p style="background-color:#FF0000;color:#FFFFFF;width:130px;padding:5px;text-align:center;font-size:large;border-radius:5px;">Alphabet</p>
+<p style="font-size:small;color:#0000FF"><strong>Drag and drop</strong> letters into the <em>puzzle</em> from here.</p>
+<img id="i1" src="a.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i2" src="b.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i3" src="c.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i4" src="d.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i5" src="e.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i6" src="f.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i7" src="g.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i8" src="h.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i9" src="i.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i10" src="j.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i11" src="k.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i12" src="l.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i13" src="m.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i14" src="n.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i15" src="o.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i16" src="p.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i17" src="q.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i18" src="r.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i19" src="s.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i20" src="t.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i21" src="u.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i22" src="v.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i23" src="w.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i24" src="x.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" /><br />
+<img id="i25" src="y.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+<img id="i26" src="z.jpg" width="30" height="30" draggable="true" ondragstart="drag(event)" />
+  <p style="font-size:small;color:#0000FF">Made a <strong>mistake</strong> ? <strong>Just click</strong> the <em>sqaure</em> containing the letter once, to clear it up.</p>
+<p onclick="answers()" style="background-color:#FF0000;color:#FFFFFF;width:130px;padding:5px;text-align:center;font-size:medium;border-radius:5px;">Answers</p>
+ </div>
+<div id="content_middle">
+<!---1st row---->
+<div id="puzzle">
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" >
+  <img src="1r.jpg" id="img1" width="30" height="30" alt="letterR" />
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" >
+  <img src="2i.jpg" id="img1" width="30" height="30" alt="letterI" />
+ </div>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="this.innerHTML=''">
+  </div>
+<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" >
+  <img src="3g.jpg" id="img1" width="30" height="30" alt="letterG" />
+ </div>
+<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="this.innerHTML=''" >
+  </div>
+<div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+ <!---2nd row---->
+<div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  
+  </div>
+<div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  <!--img src="../images/dollar.jpg" draggable="true" ondragstart="drag(event)" id="drag2" width="50" height="50"-->
+ 
+ </div>
+<div id="div11" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div12" ondrop="drop(event)" ondragover="allowDrop(event)" >
+   <img src="5f.jpg" id="img5" width="30" height="30" alt="letterF" />
+ </div>
+  <div style="clear:both;"></div>
+   <!----3rd row---->
+<div id="div13" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div14" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+ </div>
+<div id="div15" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div16" ondrop="drop(event)" ondragover="allowDrop(event)" >
+    <img src="6n.jpg" id="img5" width="30" height="30" alt="letter" />
+  </div>
+<div id="div17" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div18" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+  <!----4th row---->
+<div id="div19" ondrop="drop(event)" ondragover="allowDrop(event)"  >
+ </div>
+<div id="div20" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+ </div>
+<div id="div21" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div22" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div23" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div24" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+  <!----5th row---->
+<div id="div25" ondrop="drop(event)" ondragover="allowDrop(event)"  >
+   <img src="7w.jpg" id="img1" width="30" height="30" alt="letterW" />
+ </div>
+<div id="div26" ondrop="drop(event)" ondragover="allowDrop(event)" >
+  <img src="8o.jpg" id="img8" width="30" height="30" alt="letterO" />
+  </div>
+<div id="div27" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div28" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div29" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div30" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+<!---6th row---->
+<div id="div31" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+</div>
+<div id="div32" ondrop="drop(event)" ondragover="allowDrop(event)" >
+  <img src="9n.jpg" id="img9" width="30" height="30" alt="letterN" />
+ </div>
+<div id="div33" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div34" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+   </div>
+<div id="div35" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div36" ondrop="drop(event)" ondragover="allowDrop(event)"  >
+  </div>
+  <div style="clear:both;"></div>
+ <!---7th row---->
+<div id="div37" ondrop="drop(event)" ondragover="allowDrop(event)"  >
+   <img src="10h.jpg" id="img10" width="30" height="30" alt="letterH" />
+ </div>
+<div id="div38" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div39" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div40" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  <!--img src="../images/dollar.jpg" draggable="true" ondragstart="drag(event)" id="drag2" width="50" height="50"-->
+  </div>
+<div id="div41" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div42" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+   <!----8th row---->
+<div id="div43" ondrop="drop(event)" ondragover="allowDrop(event)"  >
+</div>
+<div id="div44" ondrop="drop(event)" ondragover="allowDrop(event)" >
+   <img src="11o.jpg" id="img11" width="30" height="30" alt="letterO" />
+  </div>
+<div id="div45" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div46" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+ </div>
+<div id="div47" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="this.innerHTML=''" >
+  </div>
+<div id="div48" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  <div style="clear:both;"></div>
+  <!----9th row---->
+<div id="div49" ondrop="drop(event)" ondragover="allowDrop(event)" >
+   <img src="aa.jpg" id="img11" width="30" height="30" alt="letterA" />
+  </div>
+<div id="div50" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+ 
+ </div>
+<div id="div51" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="this.innerHTML=''">
+  </div>
+<div id="div52" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div53" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+<div id="div54" ondrop="drop(event)" ondragover="allowDrop(event)"  onclick="this.innerHTML=''" >
+  </div>
+  </div>
+ <div style="clear:both;"></div> 
+   <p id="ans"><strong>Across:</strong> Rings; Nil; Word; Nee; Hijack; OOP<br />
+  <strong>Down:</strong> Igloo; Gin; Flea; Onion
+  </p>
+</div>
+<div id="content_right">
+<p style="background-color:#FF0000;color:#FFFFFF;width:100px;padding:5px;border-radius:5px;text-align:center;">Clues</p>
+<p><strong>Across</strong></p>
+<table>
+<tr><td>1.</td><td>Evidence that Saturn committed polygamy.</td></tr>
+<tr><td>6.</td><td>A mathematician says: "Divide 1 by the opposite of finite to get this."</td></tr>
+<tr><td>7.</td><td> When Microsoft says it will be on top of Windows-8, we have to believe its ....</td></tr>
+<tr><td>9.</td><td>Formerly Known As</td></tr>
+<tr><td>10.</td><td> Jack never gets greetings from well-wishers at the airport for this fear.</td></tr>
+<tr><td>11.</td><td>Sounded death knell for procedural programming.</td></tr>
+</table>
+<p><strong>Down</strong></p>
+<table>
+<tr><td>2.</td><td>Not a home to invest your money in, for summer.</td></tr>
+<tr><td>3.</td><td>Noble spirits lives in this.</td></tr>
+<tr><td>5.</td><td>Buy one stray dog and get one ....</td></tr>
+<tr><td>8.</td><td>Opinion - 3.142.</td></tr>
+</table>
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="footer">
+</div>
+</body>
+</html>

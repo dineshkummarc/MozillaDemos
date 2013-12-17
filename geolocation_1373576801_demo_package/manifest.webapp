@@ -1,0 +1,12 @@
+{
+  "name": "Geolocation",
+  "description": "What is your IP? Find out your IP Address and Geolocation!",
+  "launch_path": "/",
+  
+  },
+  "developer": {
+    "name": "ETI",
+    "url": "http://e-down.hit.bg"
+  },
+  "default_locale": "en"
+}

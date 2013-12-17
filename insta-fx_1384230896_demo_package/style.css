@@ -1,0 +1,183 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	position: absolute;
+	display: block;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #333333;
+	overflow: hidden;
+	background: url(Black-background-set-wood-on-chanconsultants-jpg.jpg);
+}
+#headerBack{
+	width: 100%;
+	height: 10%;
+	background-color: #ffffff ;
+	opacity: .3;
+	box-shadow: 10px 10px 5px #000000;
+}
+#header{
+	position: absolute;
+	width: 100%;
+	height: 10%;
+}
+p{
+	font: bold 15px tahoma;
+	color: #c99d04;
+	padding: 10px;
+}
+#tittle{
+	font: 50px bold tahoma;
+	font-family: 'Engagement', cursive;
+	color: #FFFFFF;
+	text-align: center;
+	text-shadow: #000000 10 0;
+}
+#imWrapper{
+	overflow: hidden;
+	//float: left;
+	cursor:move;
+	width: 100%;
+	height: 70%;
+	text-align: center;
+	//border: dashed thick #CCCCCC;
+}
+#imInWrap{
+	overflow: hidden;
+	clear:both;
+	width: 99%;
+	height: 98%;
+	box-shadow: 10px 10px 10px #000000;
+	border: dashed thick #CCCCCC;
+}
+#imInInWrap{
+	width: auto;
+	height: 100%;
+	//border: 5px solid #990000;
+}
+img{
+	//margin: 5px;
+	max-width: 100%;
+	max-height: 100%;
+	//box-shadow: 10px 10px 10px #000000;
+	//border: 1px solid #990000;
+}
+#tabs{
+	float: left;
+	width: 10%;
+	height: 20%;
+	//background-color: #353535;
+}
+button{
+	margin-left: 20%;
+	width: 70%;
+	height: 27%;
+	margin-top: 5px;
+	background-color:#353535;
+	border: 2px #CCCCCC dashed;
+  	outline: none;
+  	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+}
+#tab1{
+	background-image:url(fxButt.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#tab2{
+	background-image:url(levButt.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#tab3{
+	background-image:url(knoButt.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#editWrapper{
+	float: left;
+	width: 80%;
+	height: 20%;
+	overflow: hidden;
+}
+#editor{
+	margin:0 auto;
+	padding-top: 7px;
+	width: 400px;
+	height: 100%;
+}
+#option{
+	float: left;
+	width: 75%;
+	height: 100%;
+}
+.options{
+	padding-top: 10px;
+	padding-left: 15px;
+}
+#col1{
+	float: left;
+	width: 50%;
+	height: 100%;
+	padding-top: 5px;
+}
+#col2{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#col1 input{
+	margin-left: 20px;
+	color: #666666;
+}
+label{
+	font: bold 10px tahoma;
+	color: #c99d04;
+	padding-bottom: 2px;
+}
+#knob{
+	float: left;
+	width: 25%;
+	height: 100%;
+	text-align: center;
+}
+.knob{
+	padding-top: 15px;
+	 margin:0 auto;
+}
+#canWrapper{
+	float: left;
+	overflow: hidden;
+	margin-top: 10px;
+	width: 80%;
+	//width: 0;
+	height: 20%;
+	text-align: center;
+}
+#canWrapper1{
+	float: left;
+	overflow: hidden;
+	margin-top: 10px;
+	width: 80%;
+	height: 20%;
+	text-align: center;
+}
+canvas {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+}
+.overlay{
+	position:absolute;
+	top:0;left:0;
+	width:100%;height:100%;
+	background:url(loading-bar.gif) no-repeat center center;
+}
+.loading{
+	position:absolute;
+	top:0;left:0;
+	width:100%;height:100%;
+	background:url(loading-bar.gif) no-repeat center center;
+}

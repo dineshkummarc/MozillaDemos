@@ -1,0 +1,42 @@
+var preload = new createjs.LoadQueue(true);
+	var c = 0;
+	preload.loadFile("KnobKnob/knobKnob.css");
+	preload.loadFile("switch.css");
+	preload.loadFile("options.css");
+	//preload.loadFile("http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css");
+	preload.loadFile("jquery-ui.css");
+	preload.loadFile("style.css");
+	preload.loadFile("fx.js");
+	preload.loadFile("processing.js");
+	preload.loadFile("jquery.min.js");
+	preload.loadFile("overlays.js");
+	preload.loadFile("caman.full.js");
+	preload.loadFile("filereader.js");
+	preload.loadFile("fileDropCode.js");
+	preload.loadFile("jquery-ui.js");
+	preload.loadFile("jbnScript.js");
+	preload.loadFile("RGB.pde");
+	preload.loadFile("quick.pde");
+	preload.loadFile("KnobKnob/knobKnob.jquery.js");
+	preload.loadFile("KnobKnob/transform.js");
+	preload.loadFile("knobs.js");
+	preload.loadFile("strip.jpg");
+	preload.loadFile("selectorStrip.jpg");
+	preload.loadFile("roll1.png");
+	preload.loadFile("roll.png");
+	preload.loadFile("loading-bar.gif");
+	preload.loadFile("levButt.jpg");
+	preload.loadFile("knoButt.jpg");
+	preload.loadFile("fxButt.jpg");
+	preload.loadFile("frame.png");
+	preload.loadFile("dragHere.png");
+	preload.loadFile("Black-background-set-wood-on-chanconsultants-jpg.jpg");
+	preload.loadFile("KnobKnob/knob.png");
+	preload.loadFile("KnobKnob/knob.png");
+	preload.loadFile("jquery.min.map");
+	
+	preload.addEventListener("fileload", handleFileLoaded);
+	function handleFileLoaded(){
+		c++;
+		hideOverlayLoadingPage();
+	}

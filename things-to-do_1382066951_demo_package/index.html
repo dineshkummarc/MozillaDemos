@@ -1,0 +1,59 @@
+<html>
+<style type="text/css">
+*{
+	margin: 10px;
+	padding: 10px;
+}
+body{
+	width: 520px;
+	min-height: 600px;
+	text-align: center;
+}
+#main{
+	width: 100%;
+	height: auto;
+	text-align: left; 
+	background-color:#006699;
+}
+#cover{
+	margin: 10px;
+	background-color:#009900;
+}
+#plates{
+	background-color:#CCCCCC;
+	margin: 2px;
+}
+#plates p{
+	padding-right: 20px;
+	float:left;
+	font: 18px bold tahoma;
+	color: #333333;
+}
+
+#hid{
+	font-size: 1em;
+    color: transparent; /* Fix for Firefox */
+    border-style: none;
+    border-width: 0;
+    padding: 0 0 0 16px !important; /* Fix for Internet Explorer */
+    text-align: left;
+    width: 25px;
+    height: 25px;
+    line-height: 1 !important;
+    background: transparent url(x.png) no-repeat scroll 0 0;
+    overflow: hidden;
+    cursor: pointer;
+	}
+</style>
+
+<div id="main" >
+<p style="color: #a2a2a2; font: bold 14px tahoma;"> This Demo requires mySql database. So, this won't run here.., but you can download and use the source by connecting it with your database. </p> <p style="color: #a2a2a2; font: bold 14px tahoma;"> OR, </p> <a href="http://teampixfx.com/downloads/firefox/todo_test.php" style="color: WHITE; font: bold 14px tahoma;"> Watch the working demo here. <a/>
+
+<form action="todo_test.php" method="post" >
+
+<input name="item" placeholder="Type todo item" />
+<input name="date" placeholder="proposed date dd/mm/YYYY" />
+<input type="submit" name="sub" value="Submit"  />
+<div id="cover" >
+ </div></form></div>
+</html>

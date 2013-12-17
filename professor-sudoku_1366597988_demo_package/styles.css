@@ -1,0 +1,71 @@
+body {
+    background: #eee;
+    text-align: center;
+}
+
+h1 {
+    background: url(img/header.png) no-repeat;
+    width: 392px;
+    height: 170px;
+    text-indent: -9000px;
+    margin: auto;
+    background-size: auto 170px;
+}
+
+section { position: relative; margin: auto; width: 480px;}
+
+table {
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-spacing: 0;
+    background: #FFF;
+    font-weight: bold;
+    font-size: 24px;
+    width: 100%;
+}
+
+tr td {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    width: 50px;
+    height: 45px;
+}
+
+tr:nth-child(3n) td {
+    border-bottom: 3px solid black;
+}
+
+tr td:nth-child(3n) {
+    border-right: 3px solid black;
+}
+
+#overlay {
+    display: none;
+    background: black url(img/loader.gif) 50% 50% no-repeat;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 100%;
+}
+
+#errorMsg {
+    display: none;
+    background: #fefefe;
+    border: 2px solid red;
+    position: absolute;
+    top: 0;
+    width: 250px;
+    left: calc(50% - 125px);
+    top: calc(50% - 50px);
+}
+
+#errorMsg p {
+    font-size: 11px;
+    font-style: italic;
+}
+
+footer {
+    margin-top: 10px;
+}

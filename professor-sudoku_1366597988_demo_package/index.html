@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sudoku Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="sudoku.js"></script>
+</head>
+
+<body onload="load();">
+    <header>
+        <h1>Professor Sudoku</h1>
+    </header>
+
+    <section>
+        <table id="grid">
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+        <div id="overlay"></div>
+        <div id="errorMsg"></div>
+    </section>
+
+    <footer>
+        <button id="generateBtn">Generate a grid</button>
+        <button id="solveBtn">Solve Grid</button>
+        <button id="checkBtn">Check Grid</button>
+        <button id="clearBtn">Clear</button>
+        <button id="workerBtn">Worker: <span id='workerStatus'></span></button>
+    </footer>
+
+</body>
+</html>

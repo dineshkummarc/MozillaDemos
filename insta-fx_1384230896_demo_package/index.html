@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+<meta name="author" content="Jubin Jose :: http://teampixfx.com">
+<title>InstaFX</title>
+
+<script src="jquery.min.js"></script>
+<script>
+function hideOverlayLoadingPage(){
+	$(".loading").width(0).height(0);
+}
+</script>
+<script src="preloadjs.js"></script>
+ <script type="text/javascript" src="justLoadItDude.js"></script>
+  
+<link rel="stylesheet" href="KnobKnob/knobKnob.css" />
+<link rel="stylesheet" href="switch.css" />
+<link rel="stylesheet" href="options.css" />
+<link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="jquery-ui.css" />
+<link rel="stylesheet" href="style.css" />
+
+<script src="fx.js"></script>
+<script src="processing.js"></script>
+<script src="overlays.js"></script>
+<script src="caman.full.js"></script>
+<script type='text/javascript' src='filereader.js'></script>
+<script type='text/javascript' src='fileDropCode.js'></script>
+<script src="jquery-ui.js"></script>
+<script src="jbnScript.js"></script>
+</head>
+
+<body onload="butt(1);" onresize="resized();">
+	<div id="header">
+    <p id="tittle">Insta Effects</p>
+    </div>
+    <div id="headerBack"></div>
+    <div id="imWrapper">
+    <div id="imInWrap"><div id="imInInWrap">
+	<img src="dragHere.png" id="imLoad" />
+    </div></div>
+    </div>
+    
+    <div id="tabs">
+    	<button id="tab1" onclick="butt(1);"></button> <br/>
+        <button id="tab2" onclick="butt(2);"></button> <br/>
+        <button id="tab3" onclick="butt(3);"></button> <br/>
+    </div>
+    <div id="editWrapper">
+    <div id="editor">
+    
+    <div id="option">
+    
+    <div id="col1">
+    	<input type="checkbox" id="1" />
+        <label for="1">Brightness</label><br/> 
+    	<input type="checkbox" id="2" />
+        <label for="2">Contrast</label> <br/> 
+    	<input type="checkbox" id="3" />
+        <label for="3">Vibrance</label> <br/> 
+    	<input type="checkbox" id="4" />
+        <label for="4">Exposure</label> <br/> 
+    	<input type="checkbox" id="5" />
+        <label for="5">Hue</label> <br/> 
+    	<input type="checkbox" id="6" />
+        <label for="6">Saturation</label><br/>  
+    </div>
+    <div id="col2">
+    	<input type="checkbox" id="7" />
+        <label for="7">Sepia</label> <br/> 
+    	<input type="checkbox" id="8" />
+        <label for="8">Gamma</label> <br/> 
+    	<input type="checkbox" id="9" />
+        <label for="9">Noise</label> <br/> 
+    	<input type="checkbox" id="10" />
+        <label for="10">Clip</label> <br/> 
+    	<input type="checkbox" id="11" />
+        <label for="11">Sharpen</label> <br/> 
+    </div>
+     
+    </div>
+   
+    <div id="knob">
+    
+    <div class="knob" id="control"></div>
+	<p class="note"><span id="currentValue">0</span>%</p>
+    
+    </div>
+    </div>
+    
+    </div>
+    
+    <div id="canWrapper">
+    <canvas id="board" data-processing-sources="RGB.pde" ></canvas>
+    </div>
+    
+    <div id="canWrapper1">
+    <canvas id="board1" data-processing-sources="quick.pde" ></canvas>
+    </div>
+    
+    <div class="overlay"></div>
+    <div class="loading"></div>
+    
+</body>
+	<script src="KnobKnob/knobKnob.jquery.js"></script>
+	<script src="KnobKnob/transform.js"></script>
+	<script src="knobs.js"></script>
+
+</html>

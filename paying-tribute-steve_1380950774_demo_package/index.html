@@ -1,0 +1,132 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Steve Jobs Second Death Anniversary | Vivax Solutions</title>
+<style type="text/css">
+body{margin:0px;padding:0px;
+}
+#top{
+	margin: 0px;
+	padding: 0px;
+	background: #0A2B3E;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #7C95A5;
+	height:130px;
+	margin-bottom:20px;
+
+}
+.main {
+	text-shadow: 2px 2px 2px #800000;
+	font-size: 20px;
+	color: #FFFFFF;
+	background-color:#FF0000;
+	width:80%;
+	height:100px;
+    border-radius:10px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	top:15px;
+}
+.content{
+margin-left:auto;margin-right:auto;width:400px;text-align:center;
+}
+.heading{
+margin-left:auto;margin-right:auto;background-color:blue;width:400px;padding:10px;color:white;font-size:larger;border-radius:5px;text-align:center;
+}
+h1, h3 {
+text-align:center;
+}
+</style>
+</head>
+<body>
+<div id="top">
+<div class="main">
+<h1>Vivax Solutions</h1>
+<h3><em>www.vivaxsolutions.com</em></h3>
+</div>
+</div>
+ <p class="heading">Paying Tribute to Steve Jobs - 2<sup>nd</sup> Death Anniversary</p>
+ <div class="content">
+    <canvas id="Canvas_One" width="400" height="300" style="border:solid lightblue 2px;background-image:url('sj.jpg');" onclick="window.setInterval('drawing()',10)"></canvas>
+	<br /><br />
+	</div>
+    <script type="text/javascript">
+      var canvas = document.getElementById('Canvas_One');
+      var context = canvas.getContext('2d');
+	  var a=0;var b=0.1;
+	  	  // top of the candle
+	  context.beginPath();
+	  context.moveTo(190,180);
+	  context.arc(200,180,22,0,Math.PI+0.1,false);
+	  context.fillStyle='lightgrey';
+	  context.fill();
+	  // wax
+	  context.beginPath()
+	  context.moveTo(180,160);
+	  context.rect(180,180,40,130);
+      context.fillStyle = 'lightgrey';
+	  context.fill();
+	  // the wick
+	  context.beginPath();
+	  context.moveTo(197,165);
+	  context.fillStyle="black";
+	  context.fill();
+	  context.fillRect(197,165,5,15);
+	  context.closePath();
+
+	  function drawing(){
+	  a=a+b;
+	  if(a>=3){b=-0.1;}
+	  if(a<=-3){b=0.1;}
+	  // clear canvas
+	  context.clearRect(0,0,400,300);
+	  // top of the candle
+	  context.beginPath();
+	  context.moveTo(190,180);
+	  context.arc(200,180,22,0,Math.PI+0.1,false);
+	  context.fillStyle='lightgrey';
+	  context.fill();
+	  
+	  //yellow part of flame
+	  context.beginPath();
+	  context.moveTo(188,190);
+	  context.quadraticCurveTo(200+a,18-a,212,190);
+	  context.closePath();
+	  context.fillStyle="#FFEE00";
+	  context.fill();
+	  
+	  //white part of flame
+	  context.beginPath();
+	  context.moveTo(193,180);
+	  context.quadraticCurveTo(200+a,25-a,207,180);
+	  context.closePath();
+	  context.fillStyle="#E9DD00";
+	  context.fill();
+	  
+	  // blue part of flame
+	  context.beginPath();
+	  context.moveTo(194,180);
+	  context.quadraticCurveTo(200+a,90+a,206,180);
+	  context.fillStyle="rgba(0,0,255,0.8)";
+	  context.fill();
+	  
+	  // wax
+	  context.beginPath()
+	  context.moveTo(180,180);
+	  context.rect(180,180,40,130);
+      context.fillStyle = 'lightgrey';
+	  context.fill();
+	  // the wick
+	  context.beginPath();
+	  context.moveTo(197,165);
+	  context.fillStyle="black";
+	  context.fill();
+	  context.fillRect(197,165,5,15);
+	  context.closePath();
+
+	  }
+    </script>
+ </body>
+ </html>

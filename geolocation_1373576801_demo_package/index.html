@@ -1,0 +1,174 @@
+<html>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=400">
+<title>What is my IP Address? Where is my location? Geolocation from Google and Microsoft Bing</title>
+<meta name="Description" content="Find your location from here! Find out your IP Address!">
+<meta name="Keywords" content="my ip, ip, what is my ip, address, my, what, is, find, get, show, geolocation, locate, geolocator, location, ip locator, ip address, show my ip">
+<meta name="Author" content="Evgeni Toshev Ivanov ETI, brigante, e-down.hit.bg" />
+
+<style type="text/css">
+div#l{float:left;width:120px;margin-left:20px}
+div#r{float:right;width:120px;margin-right:20px}
+</style>
+
+</head>
+<body>
+<section id="wrapper">
+
+<center>
+
+    <header>
+
+<!--Beginning of IP Script-->
+ Your <a href="http://www.whatsmyip.us" style="color:black;"><b>IP</b></a> is: <script type="text/javascript" src="http://www.whatsmyip.us/showipsimple.php"> </script>
+<!--End of IP Script-->
+
+      <h1>1.Geolocation</h1>
+
+    </header>
+
+<meta name="viewport" content="width=400" />
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <article>
+      <p>Finding your location: <span id="status">Checking... Please allow (from Browser) your location to be shared. It's not dangerouse!</span></p>
+    </article>
+<p>
+        When prompted, allow your location to be shared to see Geolocation in action!
+
+</p>
+
+
+
+<script>
+function success(position) {
+  var s = document.querySelector('#status');
+  
+  if (s.className == 'success') {
+
+    return;
+  }
+  
+  s.innerHTML = "...yeah, Google found you:)";
+  s.className = 'success';
+  
+  var mapcanvas = document.createElement('div');
+  mapcanvas.id = 'mapcanvas';
+  mapcanvas.style.height = '400px';
+  mapcanvas.style.width = '500px';
+    
+  document.querySelector('article').appendChild(mapcanvas);
+  
+  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  var myOptions = {
+    zoom: 15,
+    center: latlng,
+    mapTypeControl: false,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+  
+  var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+  });
+}
+
+function error(msg) {
+  var s = document.querySelector('#status');
+  s.innerHTML = typeof msg == 'string' ? msg : "failed:( maybe your browser is old:) and not supports HTML5 ...update it! ...or Google changed something or MS Bing ";
+  s.className = 'fail';
+  
+
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  error('not supported...maybe your browser is old:)');
+}
+</script>
+
+
+ <h1>2.Geolocation</h1>
+
+    <p>
+        Find out approximately where you are. Try Bing too:)
+    </p>
+    <p>
+        Click on the button: <button onclick="GetMap()">Show da map from Microsoft Bing </button>
+    </p>
+    
+    <div id="mapDiv" style="position: relative; width: 400px; height: 500px;"></div>
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+    <script type="text/javascript">
+        var map = null;
+        function GetMap() {
+            /* BING_MAPS_KEY http://www.bingmapsportal.com/
+                http://www.microsoft.com/maps/developers/ */
+            var cred = "AmksnZKffguqp8LmDitTTDBnshVHJ_ZKF6hN39aCkNgiHPap7xcYsLo6194CPl1H";
+
+            map = new Microsoft.Maps.Map(document.getElementById("mapDiv"),
+                { credentials: cred });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
+            }
+            else {
+                alert('I\'m sorry, but Geolocation is not supported in your current browser. Have you tried running this in IE9?');
+            }
+        }
+
+        function locateSuccess(loc) {
+
+            var userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude);
+
+            map.setView({ center: userLocation, zoom: 14 });
+
+            var locationArea = drawCircle(userLocation);
+            map.entities.push(locationArea);
+        }
+
+        function locateFail(geoPositionError) {
+            switch (geoPositionError.code) {
+                case 0: 
+                    alert('An unknown error occurred, sorry');
+                    break;
+                case 1: 
+                    alert('Permission to use Geolocation was denied');
+                    break;
+                case 2:
+                    alert('Couldn\'t find you...');
+                    break;
+                case 3: 
+                    alert('The Geolocation request took too long and timed out');
+                    break;
+                default:
+            }
+        }
+
+        function drawCircle(loc) {
+            var radius = 100;
+            var R = 6378137;
+            var lat = (loc.latitude * Math.PI) / 180;
+            var lon = (loc.longitude * Math.PI) / 180;
+            var d = parseFloat(radius) / R;
+            var locs = new Array();
+            for (x = 0; x <= 360; x++) {
+                var p = new Microsoft.Maps.Location();
+                brng = x * Math.PI / 180;
+                p.latitude = Math.asin(Math.sin(lat) * Math.cos(d) + Math.cos(lat) * Math.sin(d) * Math.cos(brng));
+                p.longitude = ((lon + Math.atan2(Math.sin(brng) * Math.sin(d) * Math.cos(lat), Math.cos(d) - Math.sin(lat) * Math.sin(p.latitude))) * 180) / Math.PI;
+                p.latitude = (p.latitude * 180) / Math.PI;
+                locs.push(p);
+            }
+            return new Microsoft.Maps.Polygon(locs, { fillColor: new Microsoft.Maps.Color(125, 0, 0, 255), strokeColor: new Microsoft.Maps.Color(0, 0, 0, 255) });
+        }
+    </script>
+
+</body>
+</html>

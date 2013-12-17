@@ -1,0 +1,259 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang9\f0\fs22 <!DOCTYPE>\par
+<html>\par
+<head>\par
+<title>Solar System Animation: fully interactive simulation on html5 canvas with comet ISON | Vivax Solutions</title>\par
+<style type="text/css">\par
+html, body\{\par
+margin:0px;padding:0px;height:100%;\par
+\}\par
+#header\{\par
+    background: #0A2B3E;\par
+\tab font-family: Georgia, "Times New Roman", Times, serif;\par
+\tab font-size: 12px;\par
+\tab color: #7C95A5;\par
+\tab height:80px;\par
+\tab padding-top:20px;\par
+\tab width:100%;\par
+\}\par
+\par
+#sub_header\{\par
+    background: #FF0000;\par
+\tab font-family: Georgia, "Times New Roman", Times, serif;\par
+\tab font-size: 12px;\par
+\tab color: #FFFFFF;\par
+\tab height:50px;\par
+\tab width:800px;\par
+\tab margin-left:auto;\par
+\tab margin-right:auto;\par
+\tab border-radius:5px;\par
+    padding-top:5px;\par
+\}\par
+\par
+#page\{\par
+// normal size=650px;\par
+width:750px;\par
+margin-left:auto;margin-right:auto;padding-top:10px;padding-bottom:10px;margin-bottom:10px;\par
+\}\par
+\par
+#content_left\{\par
+width:500px;\par
+height:500px;\par
+float:left;\par
+margin-bottom:10px;\par
+\}\par
+\par
+#content_right\{\par
+width:180px;\par
+height:500px;\par
+//border:solid lightblue 5px;border-radius:5px;\par
+float:left;\par
+padding-left:10px;\par
+margin-left:30px;\par
+margin-bottom:5px;\par
+\}\par
+\par
+h1,h3\{\par
+margin-left:auto;margin:auto; text-align:center;\par
+\}\par
+#heading\{\par
+margin-left:auto;margin-right:auto;text-align:center;background-color:#0000FF;font-weight:bold;color:#FFFFFF;border-radius:5px;width:260px;font-size:large;padding:3px;\par
+\}\par
+\par
+#footer\{\par
+clear:both;\par
+width:100%;\par
+height:100px;\par
+background:#0A2B3E;\par
+bottom:0px;\par
+left:0px;\par
+margin-top:10px;\par
+\}\par
+</style>\par
+</head>\par
+<!--body onload="orbitting()"-->\par
+<body>\par
+<div id="header">\par
+<div id="sub_header">\par
+<h1>Vivax Solutions</h1>\par
+<h3><em>www.vivaxsolutions.com</em></h3>\par
+</div>\par
+</div>\par
+<div id="page">\par
+<div id="content_left">\par
+   <canvas id="Canvas_Six" width="500" height="500 style="">\par
+      </canvas>\par
+\tab     <script type="text/javascript">\par
+        var canvas = document.getElementById('Canvas_Six');\par
+        var context_six = canvas.getContext('2d');\par
+        // x:angle; b:increment; m:months; d:day\par
+        var y = new Date();\par
+        var s = y.getSeconds();\par
+        var year = y.getFullYear();\par
+        x = 0; b = 1; m = 1; d = 1; angM = 200; angV = 180; angMa = 200; angJ = 240; angS = 20; angU = 100; angN = 300;angC=0;\par
+        // variables for the sun, earth and moon\par
+        var imgSn = new Image();\par
+        var imgErth = new Image();\par
+        var imgMn = new Image();\par
+        var imgMerc = new Image();\par
+        var imgVenus = new Image();\par
+        var imgMars = new Image();\par
+        var imgJup = new Image();\par
+        var imgSat = new Image();\par
+        var imgUr = new Image();\par
+        var imgNep = new Image();\par
+        var imgPluto = new Image();\par
+\tab\tab var imgComet=new Image();\par
+        function orbit() \{\par
+            x = x + b; d = d + 1;\par
+            var z;\par
+            // the earth makes the full circle; year updated;\par
+            if (x == 360) \{ x = 0; year = year + 1; m = 0; \}\par
+            // days and months are updated\par
+            if (x % 30 == 0) \{ m = m + 1; d = 0; \}\par
+            context_six.clearRect(0, 0, 500, 500);\par
+            // image of the sun\par
+            context_six.beginPath();\par
+            context_six.drawImage(imgSn, 220, 220);\par
+            imgSn.src = 'sun.png';\par
+            // image of the  moving mercury\par
+            angM = angM + 0.2 * b;\par
+            if (angM >= 360) \{ angM = 0; \}\par
+            var xm = 250+ 40 * Math.sin(angM * Math.PI / 180);\par
+            var ym = 250 + 40 * Math.cos(angM * Math.PI / 180);\par
+            context_six.drawImage(imgMerc, xm - 5, ym - 5);\par
+            imgMerc.src = 'mercury.png';\par
+            // image of the  moving venus\par
+            angV = angV + 0.7 * b;\par
+            if (angV >= 360) \{ angV = 0; \}\par
+            var xv = 250 + 60 * Math.sin(angV * Math.PI / 180);\par
+            var yv = 250 + 60 * Math.cos(angV * Math.PI / 180);\par
+            context_six.drawImage(imgVenus, xv - 10, yv - 10);\par
+            imgVenus.src = 'venus.png';\par
+            // image of the  moving earth\par
+            var xe = 250 + 110 * Math.sin(x * Math.PI / 180);\par
+            var ye = 250 + 110 * Math.cos(x * Math.PI / 180);\par
+            context_six.drawImage(imgErth, xe - 10, ye - 10);\par
+            imgErth.src = 'earth.png';\par
+            // image of the moving moon\par
+            var x2 = xe + 20 * Math.sin(13 * x * Math.PI / 180);\par
+            var y2 = ye + 20 * Math.cos(13 * x * Math.PI / 180);\par
+            context_six.drawImage(imgMn, x2 - 4, y2 - 4);\par
+            imgMn.src = 'moon.png';\par
+            // image of the  moving mars\par
+            angMa = angMa + 0.5 * b;\par
+            if (angMa >= 360) \{ angMa = 0; \}\par
+            var xMa = 250 + 150 * Math.sin(angMa * Math.PI / 180);\par
+            var yMa = 250 + 150 * Math.cos(angMa * Math.PI / 180);\par
+            context_six.drawImage(imgMars, xMa - 5, yMa - 5);\par
+            imgMars.src = 'mars.png';\par
+            // image of the  moving jupiter\par
+            angJ = angJ + 0.03 * b;\par
+            if (angJ >= 360) \{ angJ = 0; \}\par
+            var xj = 250 + 180 * Math.sin(angJ * Math.PI / 180);\par
+            var yj = 250 + 180 * Math.cos(angJ * Math.PI / 180);\par
+            context_six.drawImage(imgJup, xj - 15, yj - 15);\par
+            imgJup.src = 'jupiter.png';\par
+            // image of the  moving saturn\par
+            angS = angS + 2 * 0.04 * b;\par
+            if (angS >= 360) \{ angS = 0; \}\par
+            var xs = 250 + 205 * Math.sin(angS * Math.PI / 180);\par
+            var ys = 250 + 205 * Math.cos(angS * Math.PI / 180);\par
+            context_six.drawImage(imgSat, xs - 15, ys - 15);\par
+            imgSat.src = 'saturn.png';\par
+            // image of the  moving uranus\par
+            angU = angU + 0.05 * b;\par
+            if (angU >= 360) \{ angU = 0; \}\par
+            var xu = 250 + 235 * Math.sin(angU * Math.PI / 180);\par
+            var yu = 250 + 235 * Math.cos(angU * Math.PI / 180);\par
+            context_six.drawImage(imgUr, xu + 15, yu - 15);\par
+            imgUr.src = 'uranus.png';\par
+            // image of the  moving neptune\par
+            angN = angN + 0.04 * b;\par
+            if (angN >= 360) \{ angN = 0; \}\par
+            var xn = 250 + 265 * Math.sin(angN * Math.PI / 180);\par
+            var yn = 250 + 265 * Math.cos(angN * Math.PI / 180);\par
+            context_six.drawImage(imgNep, xn - 15, yn - 15);\par
+            imgNep.src = 'neptune.png';\par
+\tab\tab\tab // image of the comet\par
+            angC = angC + 0.35 * b;\par
+            if (angC <=120) \par
+\tab\tab\tab\{\par
+            var xp = 300+150*Math.cos(angC * Math.PI / 180);\par
+            var yp = 200+50 * Math.sin(angC* Math.PI / 180);\par
+\tab\tab     context_six.drawImage(imgComet, xp - 5, yp - 5);\par
+\tab\tab\tab\}\par
+\tab\tab\tab else\par
+\tab\tab\tab\{\par
+\tab\tab     context_six.drawImage(imgComet, xp, yp,240,200);\par
+\tab\tab\tab\}\par
+            imgComet.src = 'comet.png';\par
+             \par
+            // year, month and day updated\par
+            context_six.font = '12pt Calibri';\par
+            context_six.fillStyle = 'white';\par
+            context_six.fillText('Year: ' + year, 40, 20);\par
+            context_six.fillStyle = 'white';\par
+            context_six.fillText('Month: ' + m, 130, 20);\par
+            context_six.fillStyle = 'white';\par
+            context_six.fillText('Day: ' + d, 220, 20);\par
+            context_six.fillStyle = 'white';\par
+            z = x / 15;\par
+            if (x < 180)\par
+            \{ context_six.fillText('Time - snap shot at: ' + Math.round(z) + ' .00 am', 300, 20); \}\par
+            else if (x > 180) \{ context_six.fillText('Time - snap shot at: ' + (Math.round(z) - 12) + ' .00 pm', 300, 20); \}\par
+            else \{ context_six.fillText('Time - snap shot at: ' + Math.round(z) + ' .00 noon', 300, 20); \}\par
+           //colours of the sky \par
+            if (z >= 5 && z < 7) \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "";\par
+                document.getElementById('Canvas_Six').style.backgroundColor = "#98afc7";\par
+            \}\par
+            else if (z >= 7 && z < 9) \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "";\par
+                document.getElementById('Canvas_Six').style.backgroundColor = "#4863a0"; ;\par
+            \}\par
+            else if (z >= 9 && z < 16) \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "";\par
+                document.getElementById('Canvas_Six').style.backgroundColor = "#000080"; ;\par
+            \}\par
+            else if (z >= 16 && z < 18) \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "";\par
+                document.getElementById('Canvas_Six').style.backgroundColor = "#4863a0"; ;\par
+            \}\par
+\par
+            else if (z >= 18 && z < 20) \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "";\par
+                document.getElementById('Canvas_Six').style.backgroundColor = "#000011"; ;\par
+            \}\par
+\par
+            else \{\par
+                document.getElementById('Canvas_Six').style.backgroundImage = "url('night.jpg')";\par
+\tab\tab\tab      document.getElementById('Canvas_Six').style.backgroundColor = "#000000"; ;\par
+\tab             \}\par
+\}\par
+        window.setInterval('orbit()',180);\par
+       \tab\tab\par
+    </script>\par
+\par
+</div>\par
+<div id="content_right">\par
+<p id="heading">The Animated Solar System</p>\par
+<p>\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">M</span>y<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">V</span>ery<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">E</span>ager<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">M</span>other<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">J</span>ust<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">S</span>erved<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">U</span>s<br />\par
+<span style="font-size:xx-large;color:#FF0000;font-weight:bold;">N</span>oodles<br />\par
+</p>\par
+</div>\par
+</div>\par
+<div id="footer">\par
+</div>\par
+</div>\par
+</body>\par
+</html>\par
+}
+ 

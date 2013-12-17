@@ -1,0 +1,140 @@
+<!doctype html>
+<html class="htmlBg1">
+<head>
+	<meta charset='utf-8'> 
+	<meta itemprop="image" content="img/logo_min.png">
+	<title>RadioAzione</title>
+	<link rel="canonical" href="http://radioazione.lgwebproject.it" />
+	<meta name="description" content="RadioAzione online radio aggregator.">
+	<link rel="shortcut icon" href="img/fav.ico" />
+	<link href='http://fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
+	<link href='css/style.css' rel='stylesheet' />
+	<script src="js/knockout.js"></script>
+	<script src="js/localStorage_polyfill.min.js"></script>
+	<script src="js/basilicoTooltip.min.js"></script>
+	<script src='js/ArHack.js'></script>
+	<script src="js/muses.js"></script>
+</head>
+<body>
+
+<section id="page">
+
+	<header>
+		<div id="titolo"><img src="img/logo.png" alt="RadioAzione your web radio" width="200" height="100" /></div>
+
+		<div id="menuOpzioni">
+		<br/>
+		 	<fieldset>
+	    		<legend style="color:black">Options</legend>
+				<button onclick="mostraAddRadio()" data-title="Add Web Radio">Add Radio</button> 	 
+				<button onclick="pulisciStorage();" data-title="Reset configuration">Reset</button><br/>			
+			</fieldset>
+		</div>
+	</header>
+			
+	<section id="bindRadio" >
+		<div>
+			<div style="width:315px; margin:auto; float:left">
+				<!-- Radios list -->
+				<div  class="container">
+					<strong>Radio (<span data-bind="text: radioToShow().length"></span>):</strong> 
+					<select style="width:100px" data-bind="options: optionValues, value: typeToShow"></select><br/>
+					<div class="listaRadio scrollbar" data-bind="foreach: radioToShow" style="height: 180px;">
+						<span>
+							<img  src="img/-.png" data-bind='click: $parent.removeRadio, event: { mouseover: showBasilicoTooltip, mouseout: hideBasilicoTooltip }' data-title="Remove" alt="Remove">
+							<img src="img/edit.png" data-bind='click: $parent.editRadio, event: { mouseover: showBasilicoTooltip, mouseout: hideBasilicoTooltip }' data-title="Edit" alt="Edit">  
+							<a href="#" data-bind="text: name, click: $parent.cambiaRadio, event: { mouseover: showBasilicoTooltip, mouseout: hideBasilicoTooltip }" data-title="Listen"></a>		
+						</span>	
+					</div>
+				</div>
+
+				<!-- Favourites -->
+				<div class="container" style="margin-top:4px">
+						<strong>Favourites Radios (<span data-bind="text: radioPreferite().length" ></span> / 10)</strong>
+						<div class="listaRadio scrollbar" data-bind="foreach: radioPreferite" style="height: 117px;">
+							<span>
+								<img  src="img/-.png" data-bind='click: $parent.removePreferito, event: { mouseover: showBasilicoTooltip, mouseout: hideBasilicoTooltip }' data-title="Remove" alt="Remove"> 
+								<a href="#" data-bind="text: $data, click: $parent.ascoltaPreferito, event: { mouseover: showBasilicoTooltip, mouseout: hideBasilicoTooltip }" data-title="Listen" ></a>		
+							</span>
+						</div>
+				</div>
+			</div>
+
+			<!-- Radio Player-->
+			<div style="text-align:center;  margin-left:5px; width:465px; height:366px; float:right;" class="container">
+				<span id="msgRadio" class="msgHeader">Select a radio</span> 
+				<br/>
+				<div id="playerDiv">
+				<script type="text/javascript">
+					MRP.insert({
+					'codec':'mp3',
+					'volume':65,
+					'autoplay':false,
+					'buffering':5,
+					'title':'RadioAzione',
+					'welcome':'Welcome!',
+					'bgcolor':'#409e3d',
+					'skin':'mcclean',
+					'width':180,
+					'height':60
+					});
+				</script>
+				</div>
+		
+				<br/>
+				<button id="btnPrevRadio" style="visibility:hidden;" data-bind="click: radioPrecendente" data-title="Previus radio">&#60;</button>
+				<button data-bind="click: radioRandom, visible: radios().length > 0" data-title="Listen a random radio">Random Radio</button>
+				<br/>
+				<div id="btnAddPref">
+					<button data-bind="click: addPreferito, visible: radioPreferite().length < 10" data-title="Add to favourite" >Add to favourites</button>
+				</div>
+			</div>
+		</div>
+
+	<!-- Add Radio -->
+	<div class="backPanel" id="addRadioPanel" style="z-index:10;"><div style="position:relative; opacity:0; top:150px; width:300px; margin:auto; color:black" class="fadein container bgPanel">
+		<form data-bind="submit: aggiungiRadio" style="text-align:center; width:280px; margin:auto;">
+		<fieldset>
+		<legend><strong id="titoloAddRadioPan" style="color:white">Add Radio</strong></legend>
+			Name: <br/><input type="text" data-bind="value: radioToAdd"  title="Insert the radio name" x-moz-errormessage="Insert the radio name" required><br/>
+			<div style="margin:3px 0 2px 0; text-align:center;" class="container">
+				Select a <i>'m3u'</i> o <i>'pls'</i> file :<br/>
+				<input id="streamPlayerWeb"  data-bind="value: radioToAddStream" type="text" title="Select a m3u or a pls file" x-moz-errormessage="Select a m3u or a pls file" required style="visibility:hidden"><br/>
+				<input id="uploadRadio" type="file" onchange="loadRadioFile()" /><br/>
+			</div>
+			Radio schedule:<br/><input type="text" data-bind="value: radioToAddUrl" title="Inserire radio schedule's web site" x-moz-errormessage="Insert radios schedule's web site" required placeholder="Insert radio web site"><br/> 
+		Genre <small>(rock, jazz)</small>:<br/><input type="text" data-bind="value: radioToAddTipo" title="Insert genre" x-moz-errormessage="Insert genre" required><br/>
+			<button type="submit" id="submitAddRadioPan">Add</button> 
+			<button data-bind="click: pulisciAddRadio">Reset</button>
+		</fieldset>
+		</form>
+	<button onclick="nascondiAddRadio()" style="margin:3px auto 3px auto;">Close</button>
+	<button data-bind="click: nuovaRadio">Add New Radio</button>
+	</div></div>
+
+</section>
+
+
+		<div>
+			<br/>
+			Radio(Azione) <small>&#8220;Online Radio Aggregator&#8221;</small> stay tuned! (by <a href="http://www.lgwebproject.it" target="_blank">Luciano Giuseppe</a>)
+			<br/>
+		</div>
+	</section>
+
+
+<!-- Show messagge -->
+<div class="backPanel" style="z-index:100;" id="MsgPanel"><div style="position:relative; opacity:0; top:250px; min-width:200px; max-width:400px; margin:auto; background:white; color:black;" class="container fadein" >
+		<div id="MsgTxt"></div>
+		<br/>
+		<button onclick="nascondiMsg()" style="margin:3px auto 3px auto;">Close</button>
+</div></div>
+
+<!-- Per Knockout -->
+<script src="js/radio.js"></script>
+<script src="js/fileReader.js"></script>
+
+<script src='js/tools.js'></script>
+
+</body>
+</html>
