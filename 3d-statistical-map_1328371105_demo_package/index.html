@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/mm3d.css" type='text/css'>
+	<style type="text/css">
+	body { background: #000; }
+	#vp {
+		margin-left : 10%;
+		position : absolute;
+	}
+	footer {
+		min-height : 15%;
+		background-color : #555;
+		position : absolute;
+		bottom : 0;
+		width : 100%;
+		padding-bottom : 20px;
+	}
+	.hr {
+		width : 100%;
+		height : 10px;
+		background-color : #444;
+	}
+	#pointer {
+		position : absolute;
+		width : 0;
+		height : 0;
+		left : 110px;
+		border-width : 10px;
+		border-color : #444 transparent transparent transparent;
+		border-style : solid;
+		transition-property: left;
+		transition-duration: .5s;
+		-webkit-transition-property: left;
+		-webkit-transition-duration: .5s;
+		-o-transition-property: left;
+		-o-transition-duration: .5s;
+	}
+	.intro {
+		text-align : center;
+		font-weight : bold;
+		font-size : 1.2em;
+		color : #ccc;
+		position : absolute;
+		bottom : 20px;
+		left : 90px;
+	}
+	footer  ul {
+		display : block;
+		margin-left : 10px;
+		color : #eee;
+	}
+	footer ul > li {
+		display : block;
+		cursor : pointer;
+		float : left;
+		margin : 2px 10px 2px 40px;
+	}
+	footer ul > li  > span {
+		padding : 10px 5px;
+		border-style : solid;
+		border-radius : 33px;
+		border-width : 4px;
+		border-color : transparent;
+	}
+	footer ul > li:hover  > span {
+		border-color : #fa0;
+	}
+	footer .end {
+		float : right;
+		font-size : .9em;
+		color : #aaa;
+		margin-right : 30px;
+	}
+	a:link {color: #aae}     
+	a:visited {color: #aae}  
+	a:hover {color: #bbb}   
+	a:active {color: #aaa}   
+	</style>
+	<script type="text/javascript" src='js/Three.js'>
+	</script>
+	<script type="text/javascript" src='js/mm3d.min.js'></script>
+	<script type="text/javascript" src='js/mm3d.chn.js'></script>
+	<title>A test page</title>
+</head>
+<body>
+<div id="vp"></div>
+
+<footer>
+<div class="hr"></div>
+<div id="pointer"></div>
+<div>
+<ul>
+	<li><span id='bt1990'>1990<span></li>
+	<li><span id='bt2000'>2000<span></li>
+	<li><span id='bt2010'>2010<span></li>
+</ul>
+</div>
+<div class="intro">China population (1990-2010)<br>click the year</div>
+<br>
+<div class="end">
+	All population statistics are from <a href="http://www.stats.gov.cn/tjgb/rkpcgb/">National Bureau of Statictics of China</a> .
+	<br>
+	Author : <a href="mailto:alpha360x@gmail.com">Ye Jiabin</a>
+	<br>
+	Source code on Github : 
+<a href="https://github.com/alpha360x/megamap">alpha360x/megamap</a>
+</div>
+</footer>
+<script type="text/javascript">
+	var mapData2010 = {
+	 'Zhejiang'     : { data : 54426891  } ,
+	 'Jiangsu'      : { data : 78659903  } ,
+	 'Shandong'     : { data : 95793065  } ,
+	 'Anhui'        : { data : 59500510  } ,
+	 'Shanghai'     : { data : 23019148  } ,
+	 'Hebei'        : { data : 71854202  } ,
+	 'Jiangxi'      : { data : 44567475  } ,
+	 'Henan'        : { data : 94023567  } ,
+	 'Hainan'       : { data : 8671518   } ,
+	 'Taiwan'       : { data : 23162123  } ,
+	 'Hunan'        : { data : 65683722  } ,
+	 'Sichuan'      : { data : 80418200  } ,
+	 'Yunnan'       : { data : 45966239  } ,
+	 'Gansu'        : { data : 25575254  } ,
+	 'Xizang'       : { data : 3002166   } ,
+	 'Liaoning'     : { data : 43746323  } ,
+	 'Jilin'        : { data : 27462297  } ,
+	 'Heilongjiang' : { data : 38312224  } ,
+	 'Hubei'        : { data : 57237740  } ,
+	 'Shaanxi'      : { data : 37327378  } ,
+	 'Neimenggu'    : { data : 24706321  } ,
+	 'Guangxi'      : { data : 46026629  } ,
+	 'Qinghai'      : { data : 5626722   } ,
+	 'Ningxia'      : { data : 6301350   } ,
+	 'Xinjiang'     : { data : 21813334  } ,
+	 'Chongqing'    : { data : 28846170  } ,
+	 'Shanxi'       : { data : 35712111  } ,
+	 'Tianjing'     : { data : 12938224  } ,
+	 'Beijing'      : { data : 19612368  } ,
+	 'Guangdong'    : { data : 104303132 } ,
+	 'Guizhou'      : { data : 34746468  } ,
+	 'Hongkong'     : { data : 7097600   } ,
+	 'Macau'        : { data : 552300    } ,
+	 'Fujian'       : { data : 36894216  } };
+var mapData1990 = {
+	'Zhejiang'     : { data : 41445930  } ,
+	'Jiangsu'      : { data : 67056519  } ,
+	'Shandong'     : { data : 84392827  } ,
+	'Anhui'        : { data : 56180813  } ,
+	'Shanghai'     : { data : 13341896  } ,
+	'Hebei'        : { data : 61082439  } ,
+	'Jiangxi'      : { data : 37710281  } ,
+	'Henan'        : { data : 85509535  } ,
+	'Hainan'       : { data : 6557482   } ,
+	'Taiwan'       : { data : 20155830  } ,
+	'Hunan'        : { data : 60659754  } ,
+	'Sichuan'      : { data : 78351973  } ,
+	'Yunnan'       : { data : 36972619  } ,
+	'Gansu'        : { data : 22371141  } ,
+	'Xizang'       : { data : 2196010   } ,
+	'Liaoning'     : { data : 39459697  } ,
+	'Jilin'        : { data : 24658721  } ,
+	'Heilongjiang' : { data : 35214873  } ,
+	'Hubei'        : { data : 53969210  } ,
+	'Shaanxi'      : { data : 32882403  } ,
+	'Neimenggu'    : { data : 21456798  } ,
+	'Guangxi'      : { data : 42245765  } ,
+	'Qinghai'      : { data : 4456946   } ,
+	'Ningxia'      : { data : 4655451   } ,
+	'Xinjiang'     : { data : 15155778  } ,
+	'Chongqing'    : { data : 28866200  } ,
+	'Shanxi'       : { data : 28759014  } ,
+	'Tianjing'     : { data : 8785402   } ,
+	'Beijing'      : { data : 10819407  } ,
+	'Guangdong'    : { data : 62829236  } ,
+	'Guizhou'      : { data : 32391066  } ,
+	'Hongkong'     : { data : 6130000   } ,
+	'Macau'        : { data : 6130000   } ,
+	'Fujian'       : { data : 30097274  } };
+var mapData2000 = {
+	'Zhejiang'     : { data : 46770000  } ,
+	'Jiangsu'      : { data : 74380000  } ,
+	'Shandong'     : { data : 90790000  } ,
+	'Anhui'        : { data : 59860000  } ,
+	'Shanghai'     : { data : 16740000  } ,
+	'Hebei'        : { data : 67440000  } ,
+	'Jiangxi'      : { data : 41400000  } ,
+	'Henan'        : { data : 92560000  } ,
+	'Hainan'       : { data : 7870000   } ,
+	'Taiwan'       : { data : 22280000  } ,
+	'Hunan'        : { data : 64400000  } ,
+	'Sichuan'      : { data : 83290000  } ,
+	'Yunnan'       : { data : 42880000  } ,
+	'Gansu'        : { data : 25620000  } ,
+	'Xizang'       : { data : 2620000   } ,
+	'Liaoning'     : { data : 42380000  } ,
+	'Jilin'        : { data : 27280000  } ,
+	'Heilongjiang' : { data : 36890000  } ,
+	'Hubei'        : { data : 60280000  } ,
+	'Shaanxi'      : { data : 36050000  } ,
+	'Neimenggu'    : { data : 23760000  } ,
+	'Guangxi'      : { data : 44890000  } ,
+	'Qinghai'      : { data : 5180000   } ,
+	'Ningxia'      : { data : 5620000   } ,
+	'Xinjiang'     : { data : 19250000  } ,
+	'Chongqing'    : { data : 30900000  } ,
+	'Shanxi'       : { data : 32970000  } ,
+	'Tianjing'     : { data : 10010000  } ,
+	'Beijing'      : { data : 13820000  } ,
+	'Guangdong'    : { data : 90790000  } ,
+	'Guizhou'      : { data : 35250000  } ,
+	'Hongkong'     : { data : 6780000   } ,
+	'Macau'        : { data : 440000    } ,
+	'Fujian'       : { data : 34710000  } };
+
+var curMap = 2010;
+var mbh2010 = 70; /* max bar height */
+var mbh1990 = mbh2010*85509532/104303132; /* max bar height */
+var maxval = 104303132;
+var size = [window.innerWidth*.8, window.innerHeight*.8];
+var vp = document.getElementById('vp');
+var mp = new mm3d.ChinaMap(vp, mapData2010, 
+		{'size': size, 
+		'maxBarHeight' : mbh2010,
+		'urlPrefix' : 'js/map/China/map',
+		'maxval':maxval,
+		'title': 'China Population (2010)', 
+		'animation':true, 'animationStep':60});
+var pt = document.getElementById('pointer');
+var init = function(m) {
+	return function() {
+		var bt2010 = document.getElementById('bt2010');
+		var bt1990 = document.getElementById('bt1990');
+		var bt2000 = document.getElementById('bt2000');
+
+		bt2010.addEventListener('click', function() {
+				if (curMap !== 2010) {
+				mp.title('China Population (2010)');
+				mp.updateData(mapData2010, {'maxval':maxval,
+					'animation' : true});
+					curMap = 2010;
+					pt.style.left = '310px';
+				}
+		});
+
+		bt2000.addEventListener('click', function() {
+				if (curMap !== 2000) {
+				mp.title('China Population (2000)');
+				mp.updateData(mapData2000, {'maxval':maxval,
+					'animation': true});
+					curMap = 2000;
+					pt.style.left = '210px';
+				}
+		});
+
+		bt1990.addEventListener('click', function() {
+				if (curMap !== 1990) {
+				mp.title('China Population (1990)');
+				mp.updateData(mapData1990, {'maxval':maxval,
+					'animation': true});
+					curMap = 1990;
+					pt.style.left = '110px';
+				}
+		});
+
+	}
+};
+
+mp.addEventListener('load', init(mp));
+mp.init();
+
+</script>
+</body>
+</html>

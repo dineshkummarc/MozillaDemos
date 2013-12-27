@@ -1,0 +1,213 @@
+/**
+ * The stylesheet for mm3d libarary.
+ * @author Ye Jiabin
+ */
+
+body {
+	margin : 0;
+	padding : 0;
+}
+
+.mm3dMap {
+	display : block;
+}
+
+.mm3dToolbox {
+	position : absolute;
+	display  : block;
+	float    : right;
+	margin-top : 10px;
+	margin-right : 10px;
+	right    : 0;
+	z-index  : 200;
+}
+
+.mm3dScaleTag {
+	color : #fff;
+	font-weight : bold;
+	text-shadow : 0 0 1.5em #fff;
+}
+
+.mm3dTitle {
+	color          : #eee              ;
+	width          : 70%               ;
+	font-size      : 1.2em             ;
+	font-weight    : bold              ;
+	margin         : 20px 15% auto 15% ;
+	text-align     : center            ;
+	vertical-align : middle            ;
+	position       : absolute          ;
+	z-index        : 199               ;
+}
+
+.mm3dLoading {
+	display : block;
+	position : absolute;
+	left :  0;
+	right : 0;
+	background-color : #000;
+	z-index : 198;
+}
+
+.mm3dLoading  > div {
+	width    : 80%;
+	margin-left : 10%;
+	margin-right: 10%;
+	text-align : center;
+	vertical-align : middle;
+}
+
+.mm3dLoadingTitle {
+	font-size : 2.5em;
+	font-weight : bold;
+	color : #ffc;
+	text-shadow : 0 0 5px #fff;
+}
+
+.mm3dLoadingContent {
+	font-size : .8em;
+	color : #fff;
+}
+
+#mm3dMaxTag {
+	position : absolute;
+	right : 0;
+	top   : 0;
+}
+
+.mm3dLegendContainer {
+	position : absolute;
+	display  : block;
+	z-index : 200;
+	left  : 0;
+	bottom   : 0;
+	margin-bottom : 10px;
+	margin-left : 10px;
+}
+
+.mm3dLegend {
+	display  : block;
+	overflow : scroll; 
+}
+
+.mm3dCamContainer {
+	position : absolute;
+	z-index  : 200;
+	left     : 12px;
+	top      : 12px;
+}
+
+.mm3dCamContainer > .mm3dCamButton {
+	display : block;
+	cursor : pointer;
+	position : absolute;
+	width : 30px;
+	height : 30px;
+	background-color : rgba(188, 188, 188, .5);
+	transform : rotate(45deg);
+	-moz-transform : rotate(45deg);
+	-webkit-transform : rotate(45deg);
+	-o-transform : rotate(45deg);
+}
+
+.mm3dCamContainer > .mm3dCamButton:hover {
+	background-color : rgba(188, 188, 188, 1);
+}
+
+.mm3dToolbar {
+}
+
+#mm3dLegendCtx {
+	left : 0;
+	top : 0;
+}
+
+.mm3dLegendItem {
+	/*
+	position : absolute;
+	display  : block;
+	*/
+	display  : block;
+	position : relative;
+	height : 20px;
+}
+
+.mm3dLegendItem > span {
+	margin: 2px 5px 2px 5px;
+}
+
+.mm3dLegendColor {
+	float : left;
+	display  : block;
+	width : 16px;
+	height : 16px;
+}
+
+.mm3dLegendName {
+	margin-left : 20px;
+	color : #ffb;
+	font-weight : bold;
+	text-shadow : 0 0 10px;
+}
+
+.mm3dLegendValue {
+	color : #ffd;
+	
+}
+
+.mm3dScaleRuleCont {
+	position : absolute;
+	display  : block;
+	z-index : 200;
+	right  : 0;
+	bottom : 10px;
+	float   : right;
+	margin-right : 10px;
+	text-shadow : 0 0 10px #ffc;
+}
+
+.mm3dScaleRule {
+	display : block;
+	box-shadow : 0 0 10px #ffc;
+}
+
+.mm3dMenuItem {
+	cursor : pointer;
+	margin : 5px 8px 8px 5px;
+	color  : white;
+	font-weight : bold;
+	text-shadow : 0 0 1em #ffc;
+}
+
+.mm3dMenuItem:hover > .mm3dMenuBox {
+	display : block;
+}
+
+.mm3dMenuBox {
+	display : none;
+	float : left;
+	position : absolute;
+	border-style : solid;
+	border-width : 3px;
+	border-color : #888;
+	border-radius : 3px;
+	padding : 5px;
+}
+
+.mm3dMenuBox:hover {
+	display : block;
+}
+
+.mm3dMenuBox > .mm3dBoxItem {
+	/* position : absolute; */
+	font-weight : normal;
+	cursor : pointer;
+	font-size : .8em;
+	text-shadow : none;
+	padding : 4px 5px;
+	color : #FFF;
+}
+
+.mm3dMenuBox > .mm3dBoxItem:hover {
+	background-color : rgba(255, 255, 0, .2);
+}

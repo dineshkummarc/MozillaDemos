@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang=en-us manifest="cache.manifest.php">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="http://www.nestoralvaro.com/Projects/orientation_tetris/iphone/touch-icon-iphone.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="http://www.nestoralvaro.com/Projects/orientation_tetris/iphone/touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="http://www.nestoralvaro.com/Projects/orientation_tetris/iphone/touch-icon-iphone4.png" />
+	<link rel="apple-touch-startup-image" href="http://www.nestoralvaro.com/Projects/orientation_tetris/iphone/startup.png">
+	<title>Tetris \|/</title>
+	<meta http-equiv="Content-Type"	content="text/html;	charset=utf-8">
+	<link href="tetris.css"	rel="stylesheet" type="text/css">
+	<link href="add2home.css"	rel="stylesheet" type="text/css">	
+	<link href="tetris.ico" rel="shortcut icon">
+	<style type="text/css">
+	html, body {
+		height: 100%;
+	}
+	#tetris	{
+		margin: 0	auto;
+	}
+	
+	.logo {
+			width:100%;
+			font-size:30px;
+			font-weight:bold;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			text-align:center;
+			-webkit-perspective: 300;
+			perspective: 300;
+			
+		}
+	.cool_box {
+		padding:10px;
+		background:#EEE;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+	}
+	</style>
+</head>
+<body style="height:320px;">
+
+<div id="imgLogo" class="logo">
+	<p>
+		<span style="color:#3444F7">
+		T
+		</span>
+		<span style="color:orange">
+		E
+		</span>
+		<span style="color:#E01B6A">
+		T
+		</span>
+		<span style="color:#29E6D9">
+		R
+		</span>
+		<span style="color:red">
+		I
+		</span>
+		<span style="color:#F5E640">
+		S
+		</span>
+		&nbsp; 
+		<span style="color:#bada55">
+		\|/
+		</span>
+		&nbsp;
+		ORIENTATION
+	</p>
+</div>
+	<!-- Warning to show how to lock the screen-->
+	<div id="how_to" class="cool_box" style="clear:both;width:300px;text-align:center;margin:auto;display:none;">
+		A part from the arrow keys on laptops you can orientate your device to control the pieces.
+		</br>
+		<ul>
+			<li>
+				Lean the phone to the front to make the piece <b>fall faster</b>.
+				<img src="./iphone/phoneFront.png" />
+			</li>
+			<li>
+				Lean the phone backwards to <b>rotate</b> the piece.
+				<img src="./iphone/phoneBack.png" />
+			</li>
+			<li>
+				Lean the phone to the left to move the <b>piece to the left</b>.
+				<img src="./iphone/phoneLeft.png" />
+			</li>
+			<li>
+				Lean the phone to the right to move the <b>piece to the right</b>.
+				<img src="./iphone/phoneRight.png" />
+			</li>
+		</ul>
+		How far will you get on this game? Do your best as it's not easy :-)
+		<br/>
+		<a href="javascript:closeHowTo()">Close this help menu</a>
+	</div> <!-- \iDeviceWarn -->
+	<p id="firstMessage" style="text-align:center;"><a href="javascript:showHowTo()">Check how to use this game</a></p>
+	<!-- Warning to show how to lock the screen-->
+	<div id="iDeviceWarn" class="cool_box" style="clear:both;width:300px;text-align:center;margin:auto;display:none;">
+		You can lock the screen to fully enjoy this game. To do so you have to:
+		</br>
+		<ul>
+			<li>Rotate your device so the display is in the desired orientation.</li>
+			<li>Double-click the Home button to display recently used apps.</li>
+			<li>Flick from left to right along the bottom of the screen.</li>
+			<li>Tap the Screen Rotation Lock button on the bottom left of the screen.</li>
+			<li>A padlock will appear in the Screen Rotation Lock button.</li>
+		</ul>
+		<br/>
+		<img src="./iphone/lock_iDevice.png" style="width:100%" />
+		<a href="javascript:closeIDeviceHelp()">Close this message</a>
+	</div> <!-- \iDeviceWarn -->
+	<br/>
+<p class="cool_box" id="iDeviceWarnText" style="display:none; font-size80%; text-align:center; width:250px; margin:auto;">
+	It seems you have an <b>apple device</b>. 
+	<br/>
+	You can lock the screen to fully enjoy this game.
+	<br/>
+	<a href="javascript:openIDeviceHelp()">Click here to know how to do it</a>
+	<br/>
+	<a href="javascript:closeIDevicesWarn();">Click here to close this message</a>
+	<br/>
+	<br/>
+	<a href="javascript:closeIDevicesWarnForever();">NEVER show this message again</a>
+</p>
+<table style="width: 100%; height:100%" cellspacing="0" cellpadding="0"><tr><td style="vertical-align: middle;">
+
+	<div id="tetris">
+		<div class="left">
+			<h1><a href="http://www.nestoralvaro.com" target="_blank">Nestor Alvaro</a>. <br/>Based on <a href="http://www.gosu.pl/tetris/" target="_blank">Js Tetris 1.19</a></h1>
+			<div class="menu">
+				<div><a href="javascript:void(0)" id="tetris-menu-start"><b>New Game</b></a></div>
+				<div id="tetris-pause">
+					<a href="javascript:void(0)" id="tetris-menu-pause"><span style="color:blue">Pause</span></a>
+				</div>
+				<div style="display: none;" id="tetris-resume">
+					<a href="javascript:void(0)" id="tetris-menu-resume"><span style="color:blue">Resume</span></a>
+				</div>
+				<div><a href="javascript:void(0)" id="tetris-menu-highscores"><span style="color:blue">Highscores</a></span></div>
+				<div><a href="javascript:void(0)" id="tetris-menu-help"><span style="color:blue">About</a></span></div>
+			</div>
+			<div id="tetris-nextpuzzle"></div>
+			<div id="tetris-gameover">Game Over</div>
+			<div id="tetris-keys">
+				<div class="h5">Keyboard:</div>
+				<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td>Rotate:</td>
+					<td></td>
+					<td><img src="key-up.gif" width="14" height="14" alt=""></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Move:</td>
+					<td><img src="key-left.gif" width="14" height="14" alt=""></td>
+					<td><img src="key-down.gif" width="14" height="14" alt=""></td>
+					<td><img src="key-right.gif" width="14" height="14" alt=""></td>
+				</tr>
+				<tr>
+					<td>Fall:</td>
+					<td colspan="3">
+						<img src="key-space.gif" width="44" height="13" alt="">
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div class="stats">
+				<div class="h5">Statistics:</div>
+				<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td	class="level">Level:</td>
+					<td><span id="tetris-stats-level">1</span></td>
+				</tr>
+				<tr>
+					<td	class="score">Score:</td>
+					<td><span id="tetris-stats-score">0</span></td>
+				</tr>
+				<tr>
+					<td	class="lines">Lines:</td>
+					<td><span id="tetris-stats-lines">0</span></td>
+				</tr>
+				<tr>
+					<td	class="apm">APM:</td>
+					<td><span id="tetris-stats-apm">0</span></td>
+				</tr>
+				<tr>
+					<td	class="time">Time:</td>
+					<td><span id="tetris-stats-time">0</span></td>
+				</tr>
+
+				</table>
+			</div>
+		</div>
+		<div class="left-border"></div>
+		<div id="tetris-area">
+			<div class="grid1"></div>
+			<div class="grid2"></div>
+			<div class="grid3"></div>
+			<div class="grid4"></div>
+			<div class="grid5"></div>
+			<div class="grid6"></div>
+		</div>
+		<div id="tetris-help" class="window">
+			<div class="top">
+				About <span id="tetris-help-close" class="close">x</span>
+			</div>
+			<div class="content" style="margin-top:	1em;">
+				<div style="margin-top:	1em;">
+				<div>JsTetris is a highly customizable tetris game written in javascript,
+				full sources available, it is free to modify.
+				</div>
+				<br>
+				<div>Author: Cezary Tomczak</div>
+				<div>Site: <a href="http://www.gosu.pl/tetris/">www.gosu.pl/tetris/</a></div>
+				<br>
+				<div>License: BSD revised (free for any use)</div>
+				<br>
+				<br>				
+				<div>Orientation addition by</div>
+				<div><a href="http://www.nestoralvaro.com/" target="_blank">www.nestoralvaro.com</a></div>				
+				</div>
+			</div>
+		</div>
+		<div id="tetris-highscores"	class="window">
+			<div class="top">
+				Highscores <span id="tetris-highscores-close" class="close">x</span>
+			</div>
+			<div class="content">
+				<div id="tetris-highscores-content"></div>
+				<br>
+				Note: these	scores are kept	in cookies,	they are only visible to your computer.
+			</div>
+		</div>
+	</div>
+</td></tr></table>
+
+	<script	type="text/javascript" src="add2home.js"></script>	
+	<script	type="text/javascript" src="tetris.js"></script>	
+	<script	type="text/javascript" src="orientation.js"></script>	
+	<script	type="text/javascript">
+	var tetris = new Tetris();
+	tetris.unit = 14;
+	tetris.areaX = 12;
+	tetris.areaY = 22;
+	</script>
+
+</body>
+</html>

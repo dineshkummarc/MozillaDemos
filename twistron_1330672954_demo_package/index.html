@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Twistron</title>
+  
+  <!-- 
+     Awesome resources about Touch Events:
+     
+     https://developer.mozilla.org/en/DOM/Touch_events
+     http://www.html5rocks.com/en/mobile/touch/ 
+      
+     Kudos!
+     
+     --by Sev
+      
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <link href='http://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    
+  <div id="msg"></div>
+   
+  <div id="menu">
+      <div id="promo">
+          <h1>Twistron</h1>
+          <em>Twister meets Tron</em>
+          <ul>
+              <li><label>Number of Players:
+                            <select name="players">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                </label></li>
+                <li><label>Feeling lucky punk? <input type="checkbox" name="hardCoreMode" /><br/><small>(Hardcore Mode)</small></label></li>
+
+                <li><input type="button" name="start" value="PLAY" /></label></li>
+                
+                <li class="pph-option"><label>Check out a variation of Twistron tailored for my company PeoplePerHour: <input type="checkbox" name="pphmode" /></label></li>
+                <li class="author">By <a href="http://twitter.com/#!/smas">@smas</a></li>
+
+          </ul>
+      </div>
+  </div>
+  
+  
+  <div id="main">
+    <ul></ul>
+  </div>
+  
+  <div id="grats">
+      <h1>Congratulations!</h1>
+      <p>You won a round of Twistron!</p>
+      <p class="challenge">Do you dare trying the hardcore mode?<br/><br/>Thought so... muahahaha!</p>
+      <p><a href="index.html" rel="self" target="_self">PLAY AGAIN!</a></p>
+  </div>
+
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
