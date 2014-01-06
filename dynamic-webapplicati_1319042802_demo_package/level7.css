@@ -1,0 +1,14 @@
+
+#container {
+    width: 1200px;
+}
+
+
+#header{
+    font-size:23px;
+}
+
+#center-section {
+    width:40%;
+    float:right;
+}

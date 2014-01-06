@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang=en-us>
+<head> 
+
+<meta name="author" content="Nestor Alvaro" /> 
+<meta name="description" content="smooth queries" /> 
+<meta name="keywords" content="smooth queries" /> 
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Smooth queries</title>
+
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="./css/media_queries.css" rel="stylesheet" type="text/css"/>
+
+</head> 
+  <body >
+  
+    <div id="media_print">
+    	Thanks for printing my CSS media query submission to Mozilla Dev Derbi :-)
+    	<br/>
+		<img src="./images/MJ_ThisIsIt_big.jpg" id="big" title="MJ" />
+		<br/>
+		Image from: <a href="http://www.google.es/imgres?q=this+is+it&um=1&hl=es&sa=N&biw=974&bih=549&tbm=isch&tbnid=RGT8PUubmv5oPM:&imgrefurl=http://www.amazon.com/Michael-Jackson-This/dp/B002TYZKIM&docid=Tohn43CEt4XvaM&imgurl=http://g-ecx.images-amazon.com/images/G/01/dvd/sony/APlusDetailPages/ThisIsIt/MJ_ThisIsIt_1_L.jpg&w=689&h=450&ei=IW6XTujZEeb24QTP1Jz0Aw&zoom=1&iact=rc&dur=299&sig=100752091720699450833&page=1&tbnh=143&tbnw=209&start=0&ndsp=8&ved=1t:429,r:7,s:0&tx=108&ty=73" title="This is it">http://www.google.es/imgres?q=this+is+it&um=1&hl=es&sa=N&biw=974&bih=549&tbm=isch&tbnid=RGT8PUubmv5oPM:&imgrefurl=http://www.amazon.com/Michael-Jackson-This/dp/B002TYZKIM&docid=Tohn43CEt4XvaM&imgurl=http://g-ecx.images-amazon.com/images/G/01/dvd/sony/APlusDetailPages/ThisIsIt/MJ_ThisIsIt_1_L.jpg&w=689&h=450&ei=IW6XTujZEeb24QTP1Jz0Aw&zoom=1&iact=rc&dur=299&sig=100752091720699450833&page=1&tbnh=143&tbnw=209&start=0&ndsp=8&ved=1t:429,r:7,s:0&tx=108&ty=73</a>
+		<br/><br/>
+    	Néstor Álvaro.
+    </div><!-- /media_print -->   
+    
+    <div id="wrapper" >
+
+        <div id="author" class="my_rounded">
+        	Developed by <a href="http://www.nestoralvaro.com" target="_blank" title="Nestor Alvaro">Nestor Alvaro</a>
+        	<br/>
+        	Sprites image from <a href="http://tango458.deviantart.com/gallery/?offset=48#/d2hd934" target="_blank" title="tango458">Tango458</a>
+        	<br/>
+        	Background  image from <a href="http://vinnie-sift-heads.deviantart.com/art/smooth-criminal-130817024?q=boost%3Apopular%20smooth%20criminal&qo=152" target="_blank" title="Vinnie-Sift-Heads">Vinnie-Sift-Heads</a>
+        </div>
+
+		<div id="figure">
+		    <div id="dancingMichael"></div>
+		    <div id="enteringMichaelWrapper">
+		    	<div id="dancingMichaelEnter"></div>
+		    </div> <!-- /enteringMichaelWrapper -->        
+		</div><!-- /figure -->
+
+
+        <div id="how_to" class="my_rounded">
+        	<div id="x_button" class="my_rounded close_me" onclick="document.getElementById('how_to').style.display='none'">X</div>
+        	<span id="intro_text">
+        	<br/>
+    	    This page will show Michael Jackson dancing until it gets to a concrete position depending on your screen's size.
+	        <br/>
+        	Then, you can see <b>Michael Jackson performing the moonwalk by enlarging or shrinking the window</b>.
+	        <br/>
+	        Enjoy!
+	        </span>
+		</div>
+		
+
+		<div id="audio_container">
+			<div id="audio_start" class="my_rounded start_me">Start Audio</div>		
+			<div id="audio_stop" class="my_rounded close_me">Stop Audio</div>		
+			<audio id="audio_0" controls preload>
+				<source src="./audio/start.mp3" type="audio/mpeg" />			
+				<source src="./audio/start.ogg" type="audio/ogg" />
+			</audio>		
+			<audio id="audio_1" controls preload>
+				<source src="./audio/start.mp3" type="audio/mpeg" />			
+				<source src="./audio/start.ogg" type="audio/ogg"/>
+			</audio>
+			<audio id="audio_2" controls preload>
+				<source src="./audio/start.mp3" type="audio/mpeg" />			
+				<source src="./audio/start.ogg" type="audio/ogg" />
+			</audio>		
+		</div><!-- /audio_container -->
+    </div><!-- /wrapper --> 
+    
+    <!-- Script goes at the end so that everything is in place -->
+	<script src="./js/scripts.js" type="text/javascript"></script>    
+	
+  </body>
+</html>

@@ -1,0 +1,23 @@
+
+#container {
+    width: 800px;
+}
+
+
+#header{
+    font-size:19px;
+}
+
+
+#right-section{
+    display:none;
+}
+
+#center-section {
+    width:65%;
+    float:right;
+}
+
+#left-section {
+	width:24%;
+}

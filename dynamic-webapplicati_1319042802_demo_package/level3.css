@@ -1,0 +1,43 @@
+
+#container {
+    width: 400px;
+}
+
+#header{
+    font-size:14px;
+}
+
+
+#nav {
+    float:left;
+    height: 424px;
+    margin-top:0px;
+}
+
+#right-section{
+    display:none;
+}
+
+
+#nav ul {
+    padding-left:10px;
+    width: 140px;
+}
+
+#nav ul li {
+    float: none;
+    height: 40px;
+}
+
+#center-section {
+    display: none;
+}
+
+#left-section {
+    width: 45%;
+    float: right;
+}
+
+#footer p{
+    font-size: 20px;
+}

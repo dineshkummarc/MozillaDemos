@@ -1,0 +1,105 @@
+body {
+	background:black;
+}
+
+#media_print {
+	display:none;
+}
+	
+#wrapper {
+	height:418px;
+    background: url("../images/bg_pattern.png");
+	background-repeat:repeat-x;
+	background-position:0px 0px;	
+    background-attachment:fixed;
+	width:100%;
+}
+
+#figure {
+	margin-top:70px;
+}
+
+#dancingMichael, #dancingMichaelEnter{
+	width:33px;
+	height:68px;
+}
+
+#audio_container {
+	clear:both;
+	margin-top:30px;
+}
+
+#audio_1, #audio_2 {
+	visibility:hidden;
+}
+
+#audio_stop {
+	float:left;
+}
+
+.my_rounded {
+	clear:both;
+	margin: 5px;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	text-align: auto;
+	text-decoration: none;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	position: relative;
+}
+.close_me {
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	margin:0px 0px 10px 0px;
+    background: #948E8F url(../images/overlay.png) repeat-x;
+	cursor: pointer;
+    color: #fff;	
+}
+
+.close_me:hover {
+    background: #837d7e;
+}
+
+.start_me {
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	margin:0px 0px 10px 0px;
+    background: #4784F5 url(../images/overlay.png) repeat-x;
+	cursor: pointer;
+    color: #fff;
+    display:none;
+}
+
+.start_me:hover {
+    background: #3673e4;
+}
+
+#audio_start, #audio_stop {
+	float:left;
+	width:80px;
+}
+
+#x_button {
+	display:none;
+	width:10px;
+}
+
+#how_to{
+	margin-top:50px;
+    background: #4EA0F2 url(../images/overlay.png) repeat-x;
+    color: #fff;
+}
+
+#author{
+    background: #bbf url(../images/overlay.png) repeat-x;
+    color: #fff;
+}
+
+#dancingMichaelEnter {
+	display:none;
+}

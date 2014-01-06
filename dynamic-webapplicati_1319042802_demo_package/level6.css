@@ -1,0 +1,18 @@
+
+#container {
+    width: 1000px;
+}
+
+#header{
+    font-size:22px;
+}
+
+#right-section{
+    display:none;
+}
+
+#center-section {
+    width:70%;
+    float:right;
+}
+

@@ -1,0 +1,53 @@
+#container {
+    width: 250px;
+}
+
+
+#nav {
+    float:left;
+    height: 424px;
+    margin-top:0px;
+}
+
+#right-section{
+    display:none;
+}
+
+#header p {
+	font-size:18px;
+}
+
+#nav {
+    float:left;
+    height: 424px;
+    margin-top:0px;
+}
+
+#right-section{
+    display:none;
+}
+
+
+#nav ul {
+    padding-left:10px;
+    width: 197px;
+}
+
+#nav ul li {
+    float: none;
+    height: 40px;
+	font-size: 20px;
+	color: #555;
+}
+
+#center-section {
+    display: none;
+}
+
+#left-section {
+	display: none;
+}
+
+#footer p{
+    font-size: 15px;
+}

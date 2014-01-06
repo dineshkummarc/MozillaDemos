@@ -1,0 +1,1208 @@
+/**
+	Here you can find all the media queries used to create Michael Jackson's moonwalk 
+	when enlarging or shrinking the screen's size.
+	
+	Also some media queries for printing the page (showing more MJ images)
+**/
+
+@media screen and (max-width : 320px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:0px;
+    }
+}
+
+/***********************/
+/*** Start of cycle ***/
+@media screen and (min-width: 320px) and (max-width : 325px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:0px;
+    }
+}
+
+@media screen and (min-width: 326px) and (max-width : 331px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:6px;
+    }
+}
+
+@media screen and (min-width: 332px) and (max-width : 337px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:12px;
+    }
+}
+
+@media screen and (min-width: 338px) and (max-width : 343px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:18px;
+    }
+}
+
+@media screen and (min-width: 344px) and (max-width : 349px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:24px;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width : 355px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:30px;
+    }
+}
+
+@media screen and (min-width: 356px) and (max-width : 361px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:36px;
+    }
+}
+
+@media screen and (min-width: 362px) and (max-width : 367px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:42px;
+    }
+}
+
+@media screen and (min-width: 368px) and (max-width : 373px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:48px;
+    }
+}
+
+@media screen and (min-width: 374px) and (max-width : 379px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:54px;
+    }
+}
+
+@media screen and (min-width: 380px) and (max-width : 385px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:60px;
+    }
+}
+
+@media screen and (min-width: 386px) and (max-width : 391px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:66px;
+    }
+}
+
+@media screen and (min-width: 392px) and (max-width : 397px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:72px;
+    }
+}
+
+@media screen and (min-width: 398px) and (max-width : 403px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:78px;
+    }
+}
+
+@media screen and (min-width: 404px) and (max-width : 409px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:84px;
+    }
+}
+
+@media screen and (min-width: 410px) and (max-width : 415px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:90px;
+    }
+}
+
+@media screen and (min-width: 416px) and (max-width : 421px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:96px;
+    }
+}
+
+@media screen and (min-width: 422px) and (max-width : 427px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:102px;
+    }
+}
+
+@media screen and (min-width: 428px) and (max-width : 433px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:108px;
+    }
+}
+
+@media screen and (min-width: 434px) and (max-width : 439px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:114px;
+    }
+}
+
+@media screen and (min-width: 440px) and (max-width : 445px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:120px;
+    }
+}
+
+@media screen and (min-width: 446px) and (max-width : 451px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:126px;
+    }
+}
+
+@media screen and (min-width: 452px) and (max-width : 457px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:132px;
+    }
+}
+
+@media screen and (min-width: 458px) and (max-width : 463px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:138px;
+    }
+}
+
+@media screen and (min-width: 464px) and (max-width : 469px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:144px;
+    }
+}
+
+@media screen and (min-width: 470px) and (max-width : 475px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:150px;
+    }
+}
+
+@media screen and (min-width: 476px) and (max-width : 481px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:156px;
+    }
+}
+
+@media screen and (min-width: 482px) and (max-width : 487px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:162px;
+    }
+}
+
+@media screen and (min-width: 488px) and (max-width : 493px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:168px;
+    }
+}
+
+@media screen and (min-width: 494px) and (max-width : 499px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:174px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width : 505px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:180px;
+    }
+}
+
+@media screen and (min-width: 506px) and (max-width : 511px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:186px;
+    }
+}
+
+@media screen and (min-width: 512px) and (max-width : 517px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:192px;
+    }
+}
+
+@media screen and (min-width: 518px) and (max-width : 523px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:198px;
+    }
+}
+
+@media screen and (min-width: 524px) and (max-width : 529px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:204px;
+    }
+}
+
+@media screen and (min-width: 530px) and (max-width : 535px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:210px;
+    }
+}
+
+@media screen and (min-width: 536px) and (max-width : 541px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:216px;
+    }
+}
+
+@media screen and (min-width: 542px) and (max-width : 547px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:222px;
+    }
+}
+
+@media screen and (min-width: 548px) and (max-width : 553px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:228px;
+    }
+}
+
+@media screen and (min-width: 554px) and (max-width : 559px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:234px;
+    }
+}
+
+@media screen and (min-width: 560px) and (max-width : 565px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:240px;
+    }
+}
+
+@media screen and (min-width: 566px) and (max-width : 571px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:246px;
+    }
+}
+
+@media screen and (min-width: 572px) and (max-width : 577px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:252px;
+    }
+}
+
+@media screen and (min-width: 578px) and (max-width : 583px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:258px;
+    }
+}
+
+@media screen and (min-width: 584px) and (max-width : 589px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:264px;
+    }
+}
+
+@media screen and (min-width: 590px) and (max-width : 595px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:270px;
+    }
+}
+
+@media screen and (min-width: 596px) and (max-width : 601px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:276px;
+    }
+}
+
+@media screen and (min-width: 602px) and (max-width : 607px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:282px;
+    }
+}
+
+@media screen and (min-width: 608px) and (max-width : 613px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:288px;
+    }
+}
+
+@media screen and (min-width: 614px) and (max-width : 619px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:294px;
+    }
+}
+
+@media screen and (min-width: 620px) and (max-width : 625px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:300px;
+    }
+}
+
+@media screen and (min-width: 626px) and (max-width : 631px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:306px;
+    }
+}
+
+@media screen and (min-width: 632px) and (max-width : 637px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:312px;
+    }
+}
+
+@media screen and (min-width: 638px) and (max-width : 643px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:318px;
+    }
+}
+
+@media screen and (min-width: 644px) and (max-width : 649px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:324px;
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width : 655px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:330px;
+    }
+}
+
+@media screen and (min-width: 656px) and (max-width : 661px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:336px;
+    }
+}
+
+@media screen and (min-width: 662px) and (max-width : 667px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:342px;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width : 673px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:348px;
+    }
+}
+
+@media screen and (min-width: 674px) and (max-width : 679px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:354px;
+    }
+}
+
+@media screen and (min-width: 680px) and (max-width : 685px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:360px;
+    }
+}
+
+@media screen and (min-width: 686px) and (max-width : 691px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:366px;
+    }
+}
+
+@media screen and (min-width: 692px) and (max-width : 697px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:372px;
+    }
+}
+
+@media screen and (min-width: 698px) and (max-width : 703px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:378px;
+    }
+}
+
+@media screen and (min-width: 704px) and (max-width : 709px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:384px;
+    }
+}
+
+@media screen and (min-width: 710px) and (max-width : 715px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:390px;
+    }
+}
+
+@media screen and (min-width: 716px) and (max-width : 721px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:396px;
+    }
+}
+
+@media screen and (min-width: 722px) and (max-width : 727px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:402px;
+    }
+}
+
+@media screen and (min-width: 728px) and (max-width : 733px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:408px;
+    }
+}
+
+@media screen and (min-width: 734px) and (max-width : 739px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:414px;
+    }
+}
+
+@media screen and (min-width: 740px) and (max-width : 745px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:420px;
+    }
+}
+
+@media screen and (min-width: 746px) and (max-width : 751px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:426px;
+    }
+}
+
+@media screen and (min-width: 752px) and (max-width : 757px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:432px;
+    }
+}
+
+@media screen and (min-width: 758px) and (max-width : 763px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:438px;
+    }
+}
+
+@media screen and (min-width: 764px) and (max-width : 769px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:444px;
+    }
+}
+
+@media screen and (min-width: 770px) and (max-width : 775px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:450px;
+    }
+}
+
+@media screen and (min-width: 776px) and (max-width : 781px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:456px;
+    }
+}
+
+@media screen and (min-width: 782px) and (max-width : 787px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:462px;
+    }
+}
+
+@media screen and (min-width: 788px) and (max-width : 793px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:468px;
+    }
+}
+
+@media screen and (min-width: 794px) and (max-width : 799px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:474px;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width : 805px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:480px;
+    }
+}
+
+@media screen and (min-width: 806px) and (max-width : 811px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:486px;
+    }
+}
+
+@media screen and (min-width: 812px) and (max-width : 817px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:492px;
+    }
+}
+
+@media screen and (min-width: 818px) and (max-width : 823px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:498px;
+    }
+}
+
+@media screen and (min-width: 824px) and (max-width : 829px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:504px;
+    }
+}
+
+@media screen and (min-width: 830px) and (max-width : 835px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:510px;
+    }
+}
+
+@media screen and (min-width: 836px) and (max-width : 841px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:516px;
+    }
+}
+
+@media screen and (min-width: 842px) and (max-width : 847px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:522px;
+    }
+}
+
+@media screen and (min-width: 848px) and (max-width : 853px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:528px;
+    }
+}
+
+@media screen and (min-width: 854px) and (max-width : 859px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:534px;
+    }
+}
+
+@media screen and (min-width: 860px) and (max-width : 865px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:540px;
+    }
+}
+
+@media screen and (min-width: 866px) and (max-width : 871px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:546px;
+    }
+}
+
+@media screen and (min-width: 872px) and (max-width : 877px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:552px;
+    }
+}
+
+@media screen and (min-width: 878px) and (max-width : 883px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:558px;
+    }
+}
+
+@media screen and (min-width: 884px) and (max-width : 889px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:564px;
+    }
+}
+
+@media screen and (min-width: 890px) and (max-width : 895px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:570px;
+    }
+}
+
+@media screen and (min-width: 896px) and (max-width : 901px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:576px;
+    }
+}
+
+@media screen and (min-width: 902px) and (max-width : 907px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:582px;
+    }
+}
+
+@media screen and (min-width: 908px) and (max-width : 913px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:588px;
+    }
+}
+
+@media screen and (min-width: 914px) and (max-width : 919px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:594px;
+    }
+}
+
+@media screen and (min-width: 920px) and (max-width : 925px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:600px;
+    }
+}
+
+@media screen and (min-width: 926px) and (max-width : 931px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:606px;
+    }
+}
+
+@media screen and (min-width: 932px) and (max-width : 937px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:612px;
+    }
+}
+
+@media screen and (min-width: 938px) and (max-width : 943px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:618px;
+    }
+}
+
+@media screen and (min-width: 944px) and (max-width : 949px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:624px;
+    }
+}
+
+@media screen and (min-width: 950px) and (max-width : 955px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:630px;
+    }
+}
+
+@media screen and (min-width: 956px) and (max-width : 961px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:636px;
+    }
+}
+
+@media screen and (min-width: 962px) and (max-width : 967px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:642px;
+    }
+}
+
+@media screen and (min-width: 968px) and (max-width : 973px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:648px;
+    }
+}
+
+@media screen and (min-width: 974px) and (max-width : 979px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:654px;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width : 985px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:660px;
+    }
+}
+
+@media screen and (min-width: 986px) and (max-width : 991px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:666px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width : 997px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:672px;
+    }
+}
+
+@media screen and (min-width: 998px) and (max-width : 1003px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:678px;
+    }
+}
+
+@media screen and (min-width: 1004px) and (max-width : 1009px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:684px;
+    }
+}
+
+@media screen and (min-width: 1010px) and (max-width : 1015px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:690px;
+    }
+}
+
+@media screen and (min-width: 1016px) and (max-width : 1021px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:696px;
+    }
+}
+
+@media screen and (min-width: 1022px) and (max-width : 1027px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:702px;
+    }
+}
+
+@media screen and (min-width: 1028px) and (max-width : 1033px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:708px;
+    }
+}
+
+@media screen and (min-width: 1034px) and (max-width : 1039px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:714px;
+    }
+}
+
+@media screen and (min-width: 1040px) and (max-width : 1045px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:720px;
+    }
+}
+
+@media screen and (min-width: 1046px) and (max-width : 1051px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:726px;
+    }
+}
+
+@media screen and (min-width: 1052px) and (max-width : 1057px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:732px;
+    }
+}
+
+@media screen and (min-width: 1058px) and (max-width : 1063px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:738px;
+    }
+}
+
+@media screen and (min-width: 1064px) and (max-width : 1069px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:744px;
+    }
+}
+
+@media screen and (min-width: 1070px) and (max-width : 1075px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:750px;
+    }
+}
+
+@media screen and (min-width: 1076px) and (max-width : 1081px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:756px;
+    }
+}
+
+@media screen and (min-width: 1082px) and (max-width : 1087px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:762px;
+    }
+}
+
+@media screen and (min-width: 1088px) and (max-width : 1093px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:768px;
+    }
+}
+
+@media screen and (min-width: 1094px) and (max-width : 1099px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:774px;
+    }
+}
+
+@media screen and (min-width: 1100px) and (max-width : 1105px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:780px;
+    }
+}
+
+@media screen and (min-width: 1106px) and (max-width : 1111px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:786px;
+    }
+}
+
+@media screen and (min-width: 1112px) and (max-width : 1117px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:792px;
+    }
+}
+
+@media screen and (min-width: 1118px) and (max-width : 1123px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:798px;
+    }
+}
+
+@media screen and (min-width: 1124px) and (max-width : 1129px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:804px;
+    }
+}
+
+@media screen and (min-width: 1130px) and (max-width : 1135px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:810px;
+    }
+}
+
+@media screen and (min-width: 1136px) and (max-width : 1141px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:816px;
+    }
+}
+
+@media screen and (min-width: 1142px) and (max-width : 1147px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:822px;
+    }
+}
+
+@media screen and (min-width: 1148px) and (max-width : 1153px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:828px;
+    }
+}
+
+@media screen and (min-width: 1154px) and (max-width : 1159px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:834px;
+    }
+}
+
+@media screen and (min-width: 1160px) and (max-width : 1165px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:840px;
+    }
+}
+
+@media screen and (min-width: 1166px) and (max-width : 1171px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:846px;
+    }
+}
+
+@media screen and (min-width: 1172px) and (max-width : 1177px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:852px;
+    }
+}
+
+@media screen and (min-width: 1178px) and (max-width : 1183px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:858px;
+    }
+}
+
+@media screen and (min-width: 1184px) and (max-width : 1189px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:864px;
+    }
+}
+
+@media screen and (min-width: 1190px) and (max-width : 1195px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:870px;
+    }
+}
+
+@media screen and (min-width: 1196px) and (max-width : 1201px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:876px;
+    }
+}
+
+@media screen and (min-width: 1202px) and (max-width : 1207px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:882px;
+    }
+}
+
+@media screen and (min-width: 1208px) and (max-width : 1213px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:888px;
+    }
+}
+
+@media screen and (min-width: 1214px) and (max-width : 1219px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:894px;
+    }
+}
+
+@media screen and (min-width: 1220px) and (max-width : 1225px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:900px;
+    }
+}
+
+@media screen and (min-width: 1226px) and (max-width : 1231px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:906px;
+    }
+}
+
+@media screen and (min-width: 1232px) and (max-width : 1237px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:912px;
+    }
+}
+
+@media screen and (min-width: 1238px) and (max-width : 1243px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:918px;
+    }
+}
+
+@media screen and (min-width: 1244px) and (max-width : 1249px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:924px;
+    }
+}
+
+@media screen and (min-width: 1250px) and (max-width : 1255px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:930px;
+    }
+}
+
+@media screen and (min-width: 1256px) and (max-width : 1261px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:936px;
+    }
+}
+
+@media screen and (min-width: 1262px) and (max-width : 1267px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:942px;
+    }
+}
+
+@media screen and (min-width: 1268px) and (max-width : 1273px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:948px;
+    }
+}
+
+@media screen and (min-width: 1274px) and (max-width : 1279px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -245px -1076px no-repeat;
+		margin-left:954px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width : 1285px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -0px -1076px no-repeat;
+		margin-left:960px;
+    }
+}
+
+@media screen and (min-width: 1286px) and (max-width : 1291px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:966px;
+    }
+}
+
+@media screen and (min-width: 1292px) and (max-width : 1297px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -70px -1076px no-repeat;
+		margin-left:972px;
+    }
+}
+
+@media screen and (min-width: 1298px) and (max-width : 1303px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -105px -1076px no-repeat;
+		margin-left:978px;
+    }
+}
+
+@media screen and (min-width: 1304px) and (max-width : 1309px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -140px -1076px no-repeat;
+		margin-left:984px;
+    }
+}
+
+@media screen and (min-width: 1310px) and (max-width : 1315px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -175px -1076px no-repeat;
+		margin-left:990px;
+    }
+}
+
+@media screen and (min-width: 1316px) and (max-width : 1321px){
+    #dancingMichael {
+		background:url(../images/sprites.png) -210px -1076px no-repeat;
+		margin-left:996px;
+    }
+}
+
+
+/*** End of cycle ***/
+/***********************/
+
+@media screen and (min-width: 1322px) {
+    #dancingMichael {
+		background:url(../images/sprites.png) -35px -1076px no-repeat;
+		margin-left:996px
+    }
+}
+
+@media print{
+	body {
+		font-family: Georgia, "Times New Roman", Times, serif; display:block;
+	}
+	#wrapper {
+		display:none;
+	}
+	#media_print {
+		display:block;
+	}
+}
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html manifest="fivecorners.manifest">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Five Corners</title>
+		<meta name="viewport" content="width=device-width, height=device-height" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" href="icon_16.png" />
+		<link rel="apple-touch-icon" href="icon_64.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon_114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon_72.png">
+		<link rel="apple-touch-icon-precomposed" href="icon_57.png">
+
+		<link rel="stylesheet" type="text/css" href="style.css" />
+
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="fivecorners.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+	</head>
+	<body>
+		<header>
+			<h1>Five Corners</h1>
+			<p><span class="user"></span>&nbsp;<br /> <span class="location"></span>&nbsp;</p>
+			<nav>
+				<ul>
+					<li><a href="#venues-list">venues</a></li>
+					<li><a href="#friends-list">friends</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="app-content">
+			<section id="venues-list" data-update-action="action:getposition" data-updated="0"></section>
+			<section id="friends-list" data-update-action="action:getfriends" data-updated="0"></section>
+			<section id="message"></section>
+			<section id="shoutForm">
+				<h2></h2>
+				<form action="#" data-action="action:checkin">
+					<input name="venue" id="venue" type="hidden" />
+					<textarea name="shout" id="shout"></textarea>
+					<button type="submit">checkin</button>
+				</form>
+			</section>
+			<section id="addvenue">
+				<h2>Add venue</h2>
+				<form action="#" data-action="action:addvenue">
+					<label for="name">Name</label>
+					<input name="name" id="name" type="text" required="required" />
+					<label for="address">Address</label>
+					<input name="address" id="address" type="text" />
+					<label for="city">City</label>
+					<input name="city" id="city" type="text" />
+					<label for="state">State</label>
+					<input name="state" id="state" type="text" />
+					<label for="zip">ZIP</label>
+					<input name="zip" id="zip" type="text" />
+					<button type="submit">add venue</button>
+				</form>
+			</section>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>iCreator</title>
+<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css"  />
+<link rel="stylesheet" type="text/css" href="css/ui.slider.extras.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+<div id="container">
+
+	<center><img src="images/logo-devderby.png" alt="Dev Derby" align="middle"></center>
+
+    <div class="Welcome">
+     <h2>Welcome to iCreator</h2>
+     <p>iCreator is a simple tool that helps you to create Sprite image on the go. You can now simply drag and drop the icons into the canvas area to create Sprite.</p>
+     <h3>Instructions</h3>
+     <p>1. Define Number of rows and cols</p>
+     <p>2. Enter the Width & Height of the Icon</p>
+     <p>3. Make sure all the icons are of same size</p>      
+     <br>     
+     <center><input type="button" name="Next" class="next" value="Next"></center>   
+    </div>
+    
+    <div class="FilterBox hidden">
+    	<h2>Image Settings</h2>
+        <br>
+  		<div class="Boxes"><center><span class="fl_left labelwidth">Rows - </span><div id="Rows" class="fl_left" style="width:260px;margin:5px;"></div> <input type="text" name="Rows" value="" size="2" class="fl_left inputbox"></center></div>
+        <div class="cf"></div>
+        
+  		<div class="Boxes"><center><span class="fl_left labelwidth">Cols - </span><div id="Cols" class="fl_left" style="width:260px;margin:5px;"></div> <input type="text" name="Cols" value="" size="2" class="fl_left inputbox"></center></div>
+        <div class="cf"></div>
+		<br>
+		<div class="Boxes">Width * Height</div>
+    	<select name="Width" id="Width">
+				<option value="12">12</option>
+				<option value="16">16</option>
+				<option value="24">24</option>
+				<option value="32">32</option>
+				<option value="48">48</option>
+				<option value="64">64</option>                
+				<option value="128" selected="selected">128</option>                
+		</select>
+        <div class="cf"></div>
+        <br><br><br>
+        <center><input type="button" name="Next_2" class="next_2" value="Next"></center>   
+    </div>
+    
+
+    <div class="SpritesMgr hidden">
+    <h2>Drop images file below</h2>
+    <center><canvas id="mycanvas" name="sprites" width="384" height="384"></canvas></center>
+    <p align="center" class="italic">To save - right click and select "Save Image As" option</p>
+    <br><br>
+    <center><input type="button" name="Continue" class="continue" value="New"> <input type="button" name="Create CSS" class="Create" value="Create CSS"></center>
+    <br><br>
+    <div class="SpritesCss"></div>    
+    </div>
+
+</div>
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.1.custom.min.js"></script>
+<script type="text/javascript" src="js/selectToUISlider.jQuery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</body>
+</html>

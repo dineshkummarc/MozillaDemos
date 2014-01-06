@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; font-size:12px; background-color:#333333;}
+#container{width:600px; margin:0 auto;}
+h1,h2,h3,h4,h5{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#fff; } 
+h2{font-size:16px; text-align:center; color:#F9742C }
+h3{font-size:14px; font-weight:bold; margin-left:10px; margin-bottom:5px;  color:#F9742C}
+#mycanvas{ background-color:#F1F1F1; border: 1px dashed #CCCCCC; border-radius:10px;} 
+#mycanvas.rounded{border: 1px dashed #222;}
+input[type=button]{
+	 background: -moz-linear-gradient(center top , #FFFFFF, #DEDEDE) repeat scroll 0 0 transparent;
+	 border: 1px solid #333;	 
+	 border-radius:5px;
+	 -moz-border-radius:5px;
+	 -webkit-border-radius:5px;
+	 padding:5px;
+	 cursor:pointer;
+	 width:100px;
+}
+input[type=button]:hover{
+	 background: -moz-linear-gradient(center top , #F7B850, #F6940C) repeat scroll 0 0 transparent;
+	 border: 1px solid #333;
+}
+.Welcome h3, .Welcome p{
+	 padding-bottom:5px;
+}
+.Welcome p, .Welcome h3{
+	text-align:left;
+	width:300px;
+	margin:0 auto;
+}
+.fl_left{float:left;}
+.cf{clear:both;}
+.hidden{display:none;}
+.italic{font-style:italic;}
+.top15{padding-top:30px;}
+
+.FilterBox{width:400px; margin:0 auto;}
+.Boxes{height:25px;}
+
+
+.labelwidth{width:75px; text-align:left;}
+.inputbox{margin-left:5px; border:1px solid #ccc; background-color:#fefefe; -moz-border-radius:4px; text-align:center;}
+
+.siteLinks{list-style-type:circle;padding-left:15px;margin-top: 5px;}
+.siteLinks li{margin-left:10px;}
+.siteLinks li a{color:#fff;}
+.siteLinks li a:hover{color:#F9742C;}
+
+
+.SpritesCss{
+background-color:#DEDEDE; border:1px solid #eee; -moz-border-radius:5px; border-radius:5px; padding:5px; color:#222; display:none;
+}

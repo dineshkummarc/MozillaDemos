@@ -1,0 +1,25 @@
+
+#container {
+    width: 600px;
+}
+
+#header{
+    font-size:16px;
+}
+
+#right-section{
+    display:none;
+}
+
+#center-section {
+    display: none;
+}
+
+#left-section {
+    width: 93%;
+}
+
+#nav ul li {
+	font-size: 20px;
+	color: #777;
+}

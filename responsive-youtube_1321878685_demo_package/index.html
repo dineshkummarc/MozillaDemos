@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive YouTube</title>
+		<link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" media="screen" href="screen.css" />
+        <link rel="stylesheet" media="screen" href="buttons.css" />
+    </head>
+    <body>
+	
+	<header>
+		<h1>Responsive YouTube</h1>
+		<p id="disclaimer" >
+			Browse YouTube videos with a responsive design, using CSS3 media queries, transforms and transitions,<br/>XMLHttpRequest and the YouTube API. Coded for the <a href="https://developer.mozilla.org/en-US/demos/devderby/2011/october/" >Mozilla October 2011 Dev Derby Challenge</a>.
+		</p>
+		<form id="searchForm">
+			<div style="display:none">
+			<p>Search: <input type="text" id="search" /> <a href="#" id="submitSearch" class="button">Search</a></p>
+			</div>
+			<p id="searchPanel">Search is not working.</p>
+		</form>
+	</header>
+	
+	<div id="tooltip" >
+		<div id="tooltipArrowLeft"></div>
+		<div id="tooltipArrowRight"></div>
+		<div id="tooltipContent"></div>
+		<div id="tooltipControls">
+			<a href="#" id="playHereButton" class="button" >Play here</a>
+			<a href="#" id="playInSiteButton" class="button" >Play in YouTube</a>
+		</div>
+	</div>
+	<ul id="container" class="videos"></ul>
+	
+	<script>
+
+	var tag = document.createElement('script');
+	tag.src = "http://www.youtube.com/player_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	var done = false;
+	var player;
+	
+	String.prototype.lpad = function(padString, length) {
+		var str = this;
+		while (str.length < length)
+			str = padString + str;
+		return str;
+	}
+	
+	String.prototype.addCommas = function() {
+		var str = this;
+		str += '';
+		x = str.split('.');
+		x1 = x[0];
+		x2 = x.length > 1 ? '.' + x[1] : '';
+		var rgx = /(\d+)(\d{3})/;
+		while (rgx.test(x1)) {
+			x1 = x1.replace(rgx, '$1' + ',' + '$2');
+		}
+		return x1 + x2;
+	}
+	
+	var el = document.getElementById( 'submitSearch' );
+	el.addEventListener( 'click', function( e ) {
+		var f = document.getElementById( 'searchForm' );
+		f.onSubmit();
+		e.preventDefault();
+	}, false );
+
+	var url = 'http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc';
+	
+	var tooltip = document.getElementById( 'tooltip' );
+	var tooltipContent = document.getElementById( 'tooltipContent' );
+	var tooltipControls = document.getElementById( 'tooltipControls' );
+	var videoContainer = document.getElementById( 'container' );
+	var videoPlayer = null;
+	var tooltipArrowLeft = document.getElementById( 'tooltipArrowLeft' );
+	var tooltipArrowRight = document.getElementById( 'tooltipArrowRight' );
+	var playHereButton = document.getElementById( 'playHereButton' );
+	var playInSiteButton = document.getElementById( 'playInSiteButton' );
+	playInSiteButton.addEventListener( 'click', function( e ) {
+		window.open( this.href, '_blank' );
+		e.preventDefault();
+	}, false );
+	
+	var input = document.getElementById( 'search' );
+	input.addEventListener( 'change', function() {
+		var url = 'http://gdata.youtube.com/feeds/api/videos?q=' + encodeURIComponent( this.value ) + '&v=2&alt=jsonc';
+		requestVideos( url, 0 );
+	}, false );
+	
+	var imagesToLoad;
+	var imagesLoaded;
+	
+	function onYouTubePlayerAPIReady() {
+		requestVideos( 'http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc', 0 );
+	}
+						
+	function requestVideos( url, page ) {
+		hideVideo();
+		videoContainer.innerHTML = '';
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+		request.onreadystatechange = function (aEvt) {
+			if (request.readyState == 4) {
+				if (request.status == 200) {
+					var data = JSON.parse( request.responseText );
+					imagesToLoad = data.data.items.length;
+					imagesLoaded = 0;
+					for( var j in data.data.items ) {
+						var video = data.data.items[ j ];
+						var li = document.createElement( 'li' );
+						li.className = 'video';
+						li.style.opacity = 0;
+						li.offsetY = 0;
+						( function( item, li ) { li.addEventListener( 'mousemove', function( e ) {
+							tooltip.style.visibility = 'hidden';
+							var counts = [];
+							if( !item.commentCount ) item.commentCount = 0;
+							if( !item.favoriteCount ) item.favoriteCount = 0;
+							if( !item.ratingCount ) item.ratingCount = 0;
+							if( !item.viewCount ) item.viewCount = 0;
+							counts.push( '<p><span>Comments:</span>' + item.commentCount.toString().addCommas() + '</p>' );
+							counts.push( '<p><span>Favorites:</span>' + item.favoriteCount.toString().addCommas() + '</p>' );
+							counts.push( '<p><span>Ratings:</span>' + item.ratingCount.toString().addCommas() + '</p>' );
+							counts.push( '<p><span>Views:</span>' + item.viewCount.toString().addCommas() + '</p>' );
+							tooltipContent.innerHTML = '<p>' + item.description + '</p><br/>' + counts.join( '' );
+							tooltipArrowRight.style.display = 'none';
+							tooltipArrowLeft.style.display = 'block';
+							var tx = Math.round( this.posX + this.offsetLeft + this.clientWidth );
+							if( tx > ( window.innerWidth - this.clientWidth ) ) {
+								tx = Math.round( this.posX + this.offsetLeft - this.clientWidth );
+								tooltipArrowRight.style.display = 'block';
+								tooltipArrowLeft.style.display = 'none';
+							}
+							var ty = Math.round( this.posY + this.offsetTop + this.offsetY );
+							tooltip.style.webkitTransform = 'translate(' + tx + 'px,' + ty + 'px)';
+							tooltip.style.MozTransform = 'translate(' + tx + 'px,' + ty + 'px)';
+							playHereButton.removeEventListener( 'click', arguments.callee, false );
+							playHereButton.addEventListener( 'click', function( e ) {
+								insertVideoPlayer( li, item.id );
+								e.preventDefault();
+							}, false );
+							playInSiteButton.setAttribute( 'href', item.player.default );
+							tooltip.style.visibility = 'visible';
+							e.preventDefault();
+							return false;
+						}, false ) } )( video, li );
+						( function( item ) { li.addEventListener( 'mouseout', function( e ) {
+							var relTarget = e.toElement || e.relatedTarget || e.fromElement;
+							var el = relTarget;
+							if( el ) {
+								while( el.parentNode ) {
+									if( el == tooltip ) {
+										return false;
+									}
+									el = el.parentNode;
+								}
+							}
+							tooltip.style.visibility = 'hidden';
+							e.preventDefault();
+						}, false ) } )( video );
+						var a = document.createElement( 'a' );
+						a.setAttribute( 'href', video.player.default );
+						( function( item, id ) { a.addEventListener( 'click', function( e ) {
+							insertVideoPlayer( item, id );
+							e.preventDefault();
+						}, false ) } )( li, video.id );
+						var title = document.createElement( 'h1' );
+						title.innerHTML = video.title;
+						var p = document.createElement( 'p' );
+						p.innerHTML = 'by ' + video.uploader;
+						p.className = 'uploader';
+						var p2 = document.createElement( 'p' );
+						var d = video.duration;
+						var h = Math.floor( d / 3600 ).toString().lpad( 0, 2 );
+						var m = Math.floor( ( d % 3600 ) / 60 ).toString().lpad( 0, 2 );
+						var s = Math.floor( ( d % 60 ) ).toString().lpad( 0, 2 );
+						if( !video.viewCount ) video.viewCount = 0;
+						p2.innerHTML = ( ( h > 0 )?h + ':':'' ) + m + ':' + s + ' ' + video.viewCount.toString().addCommas() + ' views';
+						p2.className = 'info';
+						var img = document.createElement( 'img' );
+						img.addEventListener( 'load', function() {
+							imagesLoaded++;
+							if( imagesLoaded == imagesToLoad ) {
+								var elements = document.querySelectorAll( 'li.video' );
+								for (var i = 0; i < elements.length; ++i) {
+									( function( item ){ 
+									setTimeout( function() { item.style.opacity = 1; }, i * 20 );
+									} )( elements[ i ] );
+								}
+							}
+						}, false );
+						img.src = video.thumbnail.hqDefault;
+						a.appendChild( title );
+						a.appendChild( p );
+						a.appendChild( p2 );
+						a.appendChild( img );
+						li.appendChild( a );
+						videoContainer.appendChild( li );
+					}
+				} else{
+					console.log('Error', request.statusText);
+				}
+				matchElementsToWidth();
+			}
+		};
+		request.send(null);
+	}
+	
+	function insertVideoPlayer( el, id ) {
+		var elements = document.querySelectorAll( 'li.video' );
+		var cY = 50000;
+		for (var i = 0; i < elements.length; ++i) {
+			var e = elements[ i ];
+			e.offsetY = 0;
+			var py = e.posY + e.offsetY;
+			e.style.webkitTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( py ) + 'px)';
+			e.style.MozTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( py ) + 'px)';
+		}
+		
+		if( videoPlayer ) {
+			document.body.removeChild( videoPlayer );
+		}
+		
+		videoPlayer = document.createElement( 'iframe' );
+		videoPlayer.setAttribute( 'id', 'videoPlayer' );
+		document.body.appendChild( videoPlayer );
+		
+		var h = videoPlayer.clientWidth * 360 / 640;
+		for (var i = 0; i < elements.length; ++i) {
+			var e = elements[ i ];
+			if( el == e ) cY = e.posY;
+			if( e.posY > cY ) {
+				e.offsetY = h + 10;
+				e.style.webkitTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( e.posY + e.offsetY ) + 'px)';
+				e.style.MozTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( e.posY + e.offsetY ) + 'px)';
+			}
+		}
+  
+		videoPlayer.setAttribute( 'type', 'text/html' );40
+		//videoPlayer.setAttribute( 'width', '855' );
+		videoPlayer.setAttribute( 'height', h );
+		videoPlayer.setAttribute( 'src', 'http://www.youtube.com/embed/' + id + '?enablejsapi=1&origin=file://' );
+		videoPlayer.setAttribute( 'frameborder', '0' );
+		videoPlayer.style.top = 60 + cY + el.clientHeight + 'px';
+		videoPlayer.style.display = 'block';
+		
+		player = new YT.Player('videoPlayer', {
+			events: {
+				'onReady': function( e ) { e.target.playVideo(); },
+				//'onStateChange': onPlayerStateChange
+			}
+        });
+		
+		window.scrollTo( 0, 60 + cY + .5 * el.clientHeight );
+		
+	}
+	
+	function hideVideo() {
+		if( videoPlayer ) videoPlayer.style.display = 'none';
+		var elements = document.querySelectorAll( 'li.video' );
+		for (var i = 0; i < elements.length; ++i) {
+			var e = elements[ i ];
+			e.offsetY = 0;
+			var py = e.posY + e.offsetY;
+			e.style.webkitTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( py ) + 'px)';
+			e.style.MozTransform = 'translate(' + Math.round( e.posX ) + 'px,' + Math.round( py ) + 'px)';
+		}
+	}
+	
+	window.addEventListener( 'resize', function(){
+		hideVideo();
+		tooltip.style.visibility = 'hidden';
+		matchElementsToWidth();
+	}, false );
+	
+	function matchElementsToWidth() {
+		var elements = document.querySelectorAll( 'li.video' );
+		if( !elements.length ) return;
+		var posX = 0,
+			posY = 0;
+		for (var i = 0; i < elements.length; ++i) {
+			var item = elements[i];
+			item.style.height = item.clientWidth * 360 / 480 + 'px';
+			tooltip.style.width = item.clientWidth + 'px';
+			tooltip.style.height = item.clientHeight + 'px';
+			images = item.querySelectorAll( 'img' );
+			if( images ) {
+				images[ 0 ].style.width = item.clientWidth - 10 + 'px';
+				images[ 0 ].style.height = item.clientHeight - 10 + 'px';
+			}
+		}
+		var count = Math.floor( videoContainer.clientWidth / elements[ 0 ].clientWidth );
+		var c = 0;
+		for (var i = 0; i < elements.length; ++i) {
+			var posX = c * elements[ 0 ].clientWidth;
+			var item = elements[i];
+			item.posX = posX;
+			item.posY = posY;
+			item.style.webkitTransform = 'translate(' + Math.round( posX ) + 'px,' + Math.round( posY + item.offsetY ) + 'px)'; // DON'T ADD A ; INSIDE THE STYLE!!
+			item.style.MozTransform = 'translate(' + Math.round( posX ) + 'px,' + Math.round( posY + item.offsetY ) + 'px)'; // MozTransform, not mozTransform
+			c++;
+			if( c >= count ) {
+				c = 0;
+				posY += item.clientHeight;
+			}
+		}
+	}
+	
+	</script>
+	
+	<script type="text/javascript">
+
+	if( location.protocol != 'file:' ) {
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-625393-26']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+		}
+	</script>
+	
+    </body>
+</html>

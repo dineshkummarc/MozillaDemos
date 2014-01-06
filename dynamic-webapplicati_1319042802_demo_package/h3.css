@@ -1,0 +1,18 @@
+    
+
+
+#container {
+    height: 550px;
+}
+
+#content {
+	display:none;
+}
+
+#nav {
+	margin-top: 0px;
+	height: 360px;
+}
+#footer {
+	display: none;
+}

@@ -1,0 +1,24 @@
+    
+#container {
+    height: 350px;
+}
+
+#content {
+	display:none;
+}
+
+#header{
+	display:none;
+}
+
+#nav {
+	margin-top: 20px;
+	height: 300px;
+}
+
+#nav ul li {
+	height: 30px;
+}
+#footer {
+	display: none;
+}
